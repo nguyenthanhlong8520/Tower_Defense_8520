@@ -79,7 +79,7 @@ public class Main extends Application {
     }
 
     // Object là cái xe , Object_2 là cái xe đang chạy trên game .
-    
+
     int Speed_2 = 2 ,Object2_x2 = 1200 , Object2_y2 = 300;
 
     public void Update(GraphicsContext gc) throws InterruptedException {
