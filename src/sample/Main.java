@@ -79,8 +79,7 @@ public class Main extends Application {
     }
 
     // Object là cái xe , Object_2 là cái xe đang chạy trên game .
-
-    int Object1_x1 = 1200 , Object_y1 = 300 , Speed_1 = 2 ;
+    
     int Speed_2 = 2 ,Object2_x2 = 1200 , Object2_y2 = 300;
 
     public void Update(GraphicsContext gc) throws InterruptedException {
@@ -113,6 +112,7 @@ public class Main extends Application {
     }
 
     //
+
     public void Move_Object1(){
         if (Object2_x2 > 610 ){ // Nếu xObject2 lớn nhỏ hơn đoạn rẽ thứ nhất
             Object2_x2 -= Speed_2;   // đi thẳng
@@ -170,56 +170,6 @@ public class Main extends Application {
             Object2_x2 += Speed_2;
             x+=2;
             x1+=2;
-        }
-    }
-    public void Direction_Object2(){
-        if (Object1_x1 == 610 && Object_y1 == 300 && x > -90){ // Quay đầu đoạn rẽ thứ nhất
-            Object1_x1 += Speed_2; // cộng tọa độ của xObject2 để nó đứng im quay đầu .
-            x1--; // rẽ trái
-        }
-        else if (Object1_x1 == 610 && Object_y1 == 430 && x < 0){ // quay phải đoạn thứ nhất
-            Object1_x1 += Speed_2;
-            x1++;
-        }
-        else if (Object1_x1 == 350 && Object_y1 == 430 && x < 90){
-            Object_y1 += Speed_2;
-            x1++;
-        }
-        else if (Object1_x1 == 350 && Object_y1 == 150 && x > 0){
-            Object1_x1 += Speed_2;
-            x1--;
-        }
-        else if (Object1_x1 == 150 && Object_y1 == 150 && x > -90){
-            Object_y1 -= Speed_2;
-            x1--;
-        }
-        else if (Object1_x1 == 150 && Object_y1 == 360 && x < 0 ){
-            Object1_x1 += Speed_2;
-            x1++;
-        }
-    }
-    public void Move_Object2(){
-        if (Object1_x1 > 610 ){ // Nếu xObject2 lớn nhỏ hơn đoạn rẽ thứ nhất
-            Object1_x1 -= Speed_2;   // đi thẳng sang trái
-        }
-        else if (Object1_x1 == 610 && Object_y1 < 430){ // nếu dừng ở đoạn rẽ thứ nhất
-            Object_y1 += Speed_2; // tọa độ y tăng lên (di chuyển xuống phía dưới)
-        }
-        else if (Object1_x1 > 350 && Object_y1 == 430){ // di chuyen sang ngang
-            Object1_x1 -= Speed_2;
-        }
-        else if (Object1_x1 == 350 && Object_y1 > 150){
-            Object_y1 -= Speed_2;
-        }
-        else if ( Object1_x1 > 150 && Object_y1 == 150){
-            Object1_x1 -= Speed_2;
-        }
-        else if (Object1_x1 == 150 && Object_y1 < 360 ){
-            Object_y1 += Speed_2;
-        }
-        else if (Object1_x1 > -90 && Object_y1 == 360){
-            Object1_x1 -= Speed_2;
-            System.out.println(Object1_x1);
         }
     }
 
