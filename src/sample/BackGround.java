@@ -21,7 +21,7 @@ public class BackGround {
         return imageView2;
     }
 
-    public void draw_Test(GraphicsContext gc) {
+    public void draw_Background_GREEN(GraphicsContext gc) {
         Image Test = new Image("file:/home/nguyen/Desktop/Image/h10.jpg");
         gc.drawImage(Test,1000,0,400,700);
     }

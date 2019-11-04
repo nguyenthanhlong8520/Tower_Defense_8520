@@ -18,5 +18,4 @@ public class CreateLinkImage {
         ImageView imageView1 = new ImageView(image1);
         return imageView1;
     }
-
 }

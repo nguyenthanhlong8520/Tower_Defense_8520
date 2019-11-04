@@ -23,7 +23,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     int Event  = 0 ;
-    int up , down , left , right;
     Button buttonPlay , buttonMainMenu;
     Scene scene_Play , scene_Background;
     Group Root_Menu , Root_BackGround;
@@ -79,7 +78,6 @@ public class Main extends Application {
         Update(graphicsContext);
     }
 
-
     // Object là cái xe , Object_2 là cái xe đang chạy trên game .
 
     int Object1_x1 = 1200 , Object_y1 = 300 , Speed_1 = 2 ;
@@ -94,11 +92,14 @@ public class Main extends Application {
                 CreateLinkImage createLinkImage = new CreateLinkImage();
                 Object_In_Game  Object_2;
                 Obj.drawShapes(gc);
-                Obj.draw_Test(gc);
+                Obj.draw_Background_GREEN(gc);
                 Object_2 = new Object_2(Object2_x2,Object2_y2,Speed_2);
                 gc.drawImage(Object_2.Create_Object(x),Object_2.getValue_X(),Object_2.getValue_Y());
                 gc.drawImage(Object_2.Create_Health(x1) , Object_2.getValue_X() + M ,Object_2.getValue_Y());
-                Action();
+                System.out.println(Object2_x2);
+                if (Event ==1 ){
+                    Action();
+                }
                 Update();
             }
         };
@@ -140,35 +141,35 @@ public class Main extends Application {
         if (Object2_x2 == 610 && Object2_y2 == 300 && x > -90){ // Quay đầu đoạn rẽ thứ nhất
             Object2_x2 += Speed_2; // cộng tọa độ của xObject2 để nó đứng im quay đầu .
             x-=2; // rẽ trái
-            x1--;
+            x1-=2;
             M=0;
         }
         else if (Object2_x2 == 610 && Object2_y2 == 430 && x < 0){ // quay phải đoạn thứ nhất
             Object2_x2 += Speed_2;
             x+=2;
-            x1++;
+            x1+=2;
             M=45;
         }
         else if (Object2_x2 == 350 && Object2_y2 == 430 && x < 90){
             Object2_y2 += Speed_2;
             x+=2;
-            x1++;
+            x1+=2;
             M=0;
         }
         else if (Object2_x2 == 350 && Object2_y2 == 150 && x > 0){
             Object2_x2 += Speed_2;
             x-=2;
-            x1--;
+            x1-=2;
         }
         else if (Object2_x2 == 150 && Object2_y2 == 150 && x > -90){
             Object2_y2 -= Speed_2;
             x-=2;
-            x1--;
+            x1-=2;
         }
         else if (Object2_x2 == 150 && Object2_y2 == 360 && x < 0 ){
             Object2_x2 += Speed_2;
             x+=2;
-            x1++;
+            x1+=2;
         }
     }
     public void Direction_Object2(){
