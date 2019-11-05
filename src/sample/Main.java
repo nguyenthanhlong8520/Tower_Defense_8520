@@ -1,9 +1,6 @@
 package sample;
-import Tower.Tower_1;
-import Tower.Tower;
 import ImageInButton.CreateLinkImage;
 import Object_In_Game.Object_1;
-import Object_In_Game.Object_2;
 import Object_In_Game.Object_In_Game;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -18,9 +15,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     int Event  = 0 ;
-    Button buttonPlay , buttonMainMenu, buttonPlay_Start , buttonNext_Level;
-    Scene scene_Play , scene_Background;
-    Group Root_Menu , Root_BackGround;
+    int Index_Map = 0;
+    Stage stage;
+    Button buttonMainMenu, buttonPlay_Start , buttonNext_Level, buttonMap_1 , buttonMap_2 , buttonMap_3;
+    Scene scene_Play , scene_Background_1,scene_Background_2;
+    Group Root_Menu , Root_BackGround_1 , Root_BackGround_2;
     int angle = 0 ,Rotate_Gun = 0, x1 = 90 , M = 30 , Count_Number_Pass;
 
     public static void main(String[] args) {
@@ -34,103 +33,95 @@ public class Main extends Application {
         CreateLinkImage createLinkImage = new CreateLinkImage();
         BackGround Background = new BackGround();
 
-        //
-        buttonNext_Level = new Button();
-        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
-        buttonNext_Level.setLayoutX(1150);
-        buttonNext_Level.setLayoutY(350);
-        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
+        // chọn bản đồ 1
+        buttonMap_1 = new Button();
+        buttonMap_1.setGraphic(createLinkImage.CreateImage_Map1());
+        buttonMap_1.setLayoutX(500);
+        buttonMap_1.setLayoutY(450);
+        buttonMap_1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (Count_Number_Pass == 5){
-                    Event = 1;
-                    Speed_1 = 10;
-                }
+                Index_Map = 1;
+                 Match_Map_1(primaryStage, createLinkImage, Background, graphicsContext , canvas);
             }
         });
-        //
-
-        //  Nút play bắt đầu cho xe chạy.
-        buttonPlay_Start = new Button();
-        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
-        buttonPlay_Start.setLayoutX(1150);
-        buttonPlay_Start.setLayoutY(450);
-        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
+        // Nút chọn bản đồ 2
+        buttonMap_2 = new Button();
+        buttonMap_2.setGraphic(createLinkImage.CreateImage_Map2());
+        buttonMap_2.setLayoutX(650);
+        buttonMap_2.setLayoutY(450);
+        buttonMap_2.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent actionEvent) {
-                Event = 1;
+                Index_Map = 2;
+                Match_Map_2(primaryStage, createLinkImage, Background, graphicsContext , canvas);
             }
         });
-        //
-        // Khởi tạo nút MainMenu và xử lý sự kiện .
-        buttonMainMenu = new Button();
-        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
-        buttonMainMenu.setLayoutX(1150);
-        buttonMainMenu.setLayoutY(550);
-        Root_BackGround = new Group();
-        Root_BackGround.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
-        scene_Background =  new Scene(Root_BackGround , 1400,700);
-        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
+        //  Nút chọn bản đồ 3
+        buttonMap_3 = new Button();
+        buttonMap_3.setGraphic(createLinkImage.CreateImage_Map3());
+        buttonMap_3.setLayoutX(800);
+        buttonMap_3.setLayoutY(450);
+        buttonMap_3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                primaryStage.setScene(scene_Play);
-                System.out.println("MainMenu");
-                MainMenu();
+                Index_Map = 3;
+                Match_Map_3(primaryStage, createLinkImage, Background, graphicsContext , canvas);
             }
         });
-
-        // Khởi tạo nút Play và xử lý sự kiện.
-        buttonPlay = new Button();
-        buttonPlay.setGraphic(createLinkImage.CreateImagePlay());
-        buttonPlay.setLayoutX(600);
-        buttonPlay.setLayoutY(250);
         Root_Menu = new Group();
-        Root_Menu.getChildren().addAll( Background.drawRobot(graphicsContext) , buttonPlay); // Background Màn hình chờ .
+        Root_Menu.getChildren().addAll( Background.drawBackground_Wait(graphicsContext),buttonMap_1,buttonMap_2,buttonMap_3); // Background Màn hình chờ .
         scene_Play = new Scene( Root_Menu ,1400,700 ) ;
-        buttonPlay.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                primaryStage.setScene(scene_Background);
-                System.out.println("Play");
-            }
-        });
         //Kết thúc.
         primaryStage.setScene(scene_Play);
+        // Match_Map_2(primaryStage, createLinkImage, Background, graphicsContext , canvas);
         primaryStage.show();
-        Update(graphicsContext);
+        Update_Match(graphicsContext);
     }
-
     // Value of speed can change : 1,2,5,10
+
     int Speed_1 = 5 , Object_x1 = 1200 , Object_y1 = 300;
-    int Speed_2 = 5 , Object_x2 = 1200 , Object_y2 = 300;
-    public void Update(GraphicsContext gc) throws InterruptedException {
+
+    public void Update_Match(GraphicsContext gc) throws InterruptedException {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 // Khởi tạo hàm vẽ background Game và nhân vật.
-                //
-                Tower tower = new Tower_1(1000,310);
-                //
                 BackGround Obj = new BackGround();
                 CreateLinkImage createLinkImage = new CreateLinkImage();
-                Object_In_Game  Object_1 , Object_2;
-                Obj.drawShapes(gc);
-                Object_1 = new Object_1(Object_x1, Object_y1, Speed_1);
-                Object_2 = new Object_2(Object_x2, Object_y2, Speed_2);
-                //Object_1
-                gc.drawImage(Object_1.Create_Object(angle),Object_1.getValue_X(),Object_1.getValue_Y());
-                gc.drawImage(Object_1.Create_Health(x1) , Object_1.getValue_X()+ M,Object_1.getValue_Y());
-                //Object2
-
-
-                Obj.draw_Background_GREEN(gc);
-                Event(Object_1);
-                Update();
-                System.out.println(Count_Number_Pass);
+                Object_In_Game  Object_1 ;
+                if (Index_Map == 1){  // chạy Map 1
+                    Obj.draw_Background_Match_1(gc);
+                    Object_1 = new Object_1(Object_x1, Object_y1, Speed_1);
+                    gc.drawImage(Object_1.Create_Object(angle),Object_1.getValue_X(),Object_1.getValue_Y());
+                    gc.drawImage(Object_1.Create_Health(x1) , Object_1.getValue_X()+ M,Object_1.getValue_Y());
+                    Obj.draw_Background_GREEN(gc);
+                    Event(Object_1);
+                    Update();
+                }
+                else if (Index_Map == 2){ // chạy Map 2
+                    Obj.draw_Background_Match_2(gc);
+                    Object_1 = new Object_1(Object_x1, Object_y1, Speed_1);
+                    gc.drawImage(Object_1.Create_Object(angle),Object_1.getValue_X(),Object_1.getValue_Y());
+                    gc.drawImage(Object_1.Create_Health(x1) , Object_1.getValue_X()+ M,Object_1.getValue_Y());
+                    Obj.draw_Background_GREEN(gc);
+                    Event(Object_1);
+                    Update();
+                }
+                else if (Index_Map == 3){ // Chạy Map 3
+                    Obj.draw_Background_Match_3(gc);
+                    Object_1 = new Object_1(Object_x1, Object_y1, Speed_1);
+                    gc.drawImage(Object_1.Create_Object(angle),Object_1.getValue_X(),Object_1.getValue_Y());
+                    gc.drawImage(Object_1.Create_Health(x1) , Object_1.getValue_X()+ M,Object_1.getValue_Y());
+                    Obj.draw_Background_GREEN(gc);
+                    Event(Object_1);
+                    Update();
+                }
             }
         };
         animationTimer.start();
     }
+
     public void Action_Object_1(Object_In_Game Object_1){
         Move_Object1(Object_1);
         Direction_Object1(Object_1);
@@ -204,8 +195,152 @@ public class Main extends Application {
         Object_y1 = 300;
         Event = 0;
     }
+
     void Count_Number_Pass(){
         Count_Number_Pass++;
         if (Count_Number_Pass == 5 || Count_Number_Pass == 10) Event = 0;
+    }
+    public void Match_Map_1(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
+    , GraphicsContext graphicsContext , Canvas canvas){
+        // nút ấn NextLevel
+        buttonNext_Level = new Button();
+        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
+        buttonNext_Level.setLayoutX(1150);
+        buttonNext_Level.setLayoutY(350);
+        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (Count_Number_Pass == 5){
+                    Event = 1;
+                    Speed_1 = 10;
+                }
+            }
+        });
+        //
+        //  Nút play bắt đầu cho xe chạy.
+        buttonPlay_Start = new Button();
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setLayoutX(1150);
+        buttonPlay_Start.setLayoutY(450);
+        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Event = 1;
+            }
+        });
+        //
+        // Khởi tạo nút MainMenu và xử lý sự kiện .
+        buttonMainMenu = new Button();
+        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
+        buttonMainMenu.setLayoutX(1150);
+        buttonMainMenu.setLayoutY(550);
+        Root_BackGround_1 = new Group();
+        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
+        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
+        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.setScene(scene_Play);
+                MainMenu();
+            }
+        });
+        //
+        primaryStage.setScene(scene_Background_1);
+    }
+
+    public void Match_Map_2(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
+    , GraphicsContext graphicsContext , Canvas canvas){
+        // nút ấn NextLevel
+        buttonNext_Level = new Button();
+        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
+        buttonNext_Level.setLayoutX(1150);
+        buttonNext_Level.setLayoutY(350);
+        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (Count_Number_Pass == 5){
+                    Event = 1;
+                    Speed_1 = 10;
+                }
+            }
+        });
+        //
+        //  Nút play bắt đầu cho xe chạy.
+        buttonPlay_Start = new Button();
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setLayoutX(1150);
+        buttonPlay_Start.setLayoutY(450);
+        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Event = 1;
+            }
+        });
+        //
+        // Khởi tạo nút MainMenu và xử lý sự kiện .
+        buttonMainMenu = new Button();
+        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
+        buttonMainMenu.setLayoutX(1150);
+        buttonMainMenu.setLayoutY(550);
+        Root_BackGround_1 = new Group();
+        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
+        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
+        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.setScene(scene_Play);
+                MainMenu();
+            }
+        });
+        //
+        primaryStage.setScene(scene_Background_1);
+    }
+
+    public void Match_Map_3(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
+    , GraphicsContext graphicsContext , Canvas canvas){
+        // nút ấn NextLevel
+        buttonNext_Level = new Button();
+        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
+        buttonNext_Level.setLayoutX(1150);
+        buttonNext_Level.setLayoutY(350);
+        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (Count_Number_Pass == 5){
+                    Event = 1;
+                    Speed_1 = 10;
+                }
+            }
+        });
+        //
+        //  Nút play bắt đầu cho xe chạy.
+        buttonPlay_Start = new Button();
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setLayoutX(1150);
+        buttonPlay_Start.setLayoutY(450);
+        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Event = 1;
+            }
+        });
+        //
+        // Khởi tạo nút MainMenu và xử lý sự kiện .
+        buttonMainMenu = new Button();
+        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
+        buttonMainMenu.setLayoutX(1150);
+        buttonMainMenu.setLayoutY(550);
+        Root_BackGround_1 = new Group();
+        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
+        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
+        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.setScene(scene_Play);
+                MainMenu();
+            }
+        });
+        //
+        primaryStage.setScene(scene_Background_1);
     }
 }
