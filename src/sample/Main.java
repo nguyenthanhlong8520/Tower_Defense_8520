@@ -12,7 +12,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 public class Main extends Application {
     int Event  = 0 ;
     int Index_Map = 0;
@@ -101,21 +100,9 @@ public class Main extends Application {
                 }
                 else if (Index_Map == 2){ // chạy Map 2
                     Obj.draw_Background_Match_2(gc);
-                    Object_1 = new Object_1(Object_x1, Object_y1, Speed_1);
-                    gc.drawImage(Object_1.Create_Object(angle),Object_1.getValue_X(),Object_1.getValue_Y());
-                    gc.drawImage(Object_1.Create_Health(x1) , Object_1.getValue_X()+ M,Object_1.getValue_Y());
-                    Obj.draw_Background_GREEN(gc);
-                    Event(Object_1);
-                    Update();
                 }
                 else if (Index_Map == 3){ // Chạy Map 3
                     Obj.draw_Background_Match_3(gc);
-                    Object_1 = new Object_1(Object_x1, Object_y1, Speed_1);
-                    gc.drawImage(Object_1.Create_Object(angle),Object_1.getValue_X(),Object_1.getValue_Y());
-                    gc.drawImage(Object_1.Create_Health(x1) , Object_1.getValue_X()+ M,Object_1.getValue_Y());
-                    Obj.draw_Background_GREEN(gc);
-                    Event(Object_1);
-                    Update();
                 }
             }
         };
@@ -126,7 +113,6 @@ public class Main extends Application {
         Move_Object1(Object_1);
         Direction_Object1(Object_1);
     }
-
     public void Move_Object1(Object_In_Game Object_1){
         if (Object_x1 > 610 ){ // Nếu xObject2 lớn nhỏ hơn đoạn rẽ thứ nhất
             Object_x1 -= Object_1.getSpeed();   // đi thẳng
@@ -149,7 +135,6 @@ public class Main extends Application {
         else if (Object_x1 > -90 && Object_y1 == 360){
             Object_x1 -= Object_1.getSpeed();; // di sang trai
         }
-
     }
     public void Direction_Object1(Object_In_Game Object_1){
         if (Object_x1 == 610 && Object_y1 == 300 && angle > -90){ // Quay đầu đoạn rẽ thứ nhất
@@ -177,7 +162,6 @@ public class Main extends Application {
             angle = 0;
         }
     }
-
     public void Update(){
         if (Object_x1 == -90){
             Object_x1 = 1200;
@@ -195,7 +179,6 @@ public class Main extends Application {
         Object_y1 = 300;
         Event = 0;
     }
-
     void Count_Number_Pass(){
         Count_Number_Pass++;
         if (Count_Number_Pass == 5 || Count_Number_Pass == 10) Event = 0;
@@ -247,7 +230,6 @@ public class Main extends Application {
         //
         primaryStage.setScene(scene_Background_1);
     }
-
     public void Match_Map_2(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
     , GraphicsContext graphicsContext , Canvas canvas){
         // nút ấn NextLevel
@@ -295,7 +277,6 @@ public class Main extends Application {
         //
         primaryStage.setScene(scene_Background_1);
     }
-
     public void Match_Map_3(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
     , GraphicsContext graphicsContext , Canvas canvas){
         // nút ấn NextLevel
