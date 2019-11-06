@@ -34,8 +34,6 @@ public class BackGround {
     }
 
     public void draw_Background_GREEN(GraphicsContext gc) {
-        Label label = new Label();
-        ImageView imageView = new ImageView();
         Image Test = new Image("file:/home/nguyen/Desktop/Image/h10.jpg");
         gc.drawImage(Test,1000,0,400,700);
     }

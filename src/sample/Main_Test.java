@@ -240,7 +240,6 @@ public class Main_Test extends Application {
                         Monster_Update_Move();
                         Monster_Update_Move_2();
                         Monster_Update_Move_3();
-                        Count_Pass();
                         Return_1();
                         Return_2();
                         Return_3();
@@ -403,12 +402,6 @@ public class Main_Test extends Application {
             Manager_Object_Car.get(2).setX(1600);
             Manager_Object_Car.get(2).setY(300);
             Manager_Object_Car.get(2).setRotate(0);
-        }
-    }
-    public void Count_Pass(){
-        if (Manager_Object_Car.get(0).getX() == 0 || Manager_Object_Car.get(1).getX() == 0 ||
-                Manager_Object_Car.get(2).getX() == 0){
-            Count_Pass += 1;
         }
     }
 }

@@ -4,7 +4,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 public class Monster_Car extends Monster{
 
@@ -52,7 +51,6 @@ public class Monster_Car extends Monster{
     @Override
     public void Rotate() {
     }
-
     public int getX() {
         return x;
     }
