@@ -8,7 +8,8 @@ import javafx.scene.paint.Color;
 public class Monster_Car extends Monster{
 
     public Image image;
-    public int x , y ,Rotate , Speed ;
+    public int x = -50, y= 45 ,Rotate , Speed ;
+
     private int Rotate_Blood = 90;
 
     @Override
@@ -33,8 +34,7 @@ public class Monster_Car extends Monster{
 
     @Override
     public void Move_Up() {
-        y -= Speed;
-    }
+        y -= Speed; }
     @Override
     public void Move_Down() {
         y += Speed;

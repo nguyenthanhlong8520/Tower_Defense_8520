@@ -1,7 +1,6 @@
 package sample;
 import ImageInButton.CreateLinkImage;
-import Object_In_Game.Object_1;
-import Object_In_Game.Object_In_Game;
+import Object_In_Game.Monster_Car;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -11,27 +10,36 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import kotlin.text.MatchNamedGroupCollection;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main extends Application {
-    int Event  = 0 ;
-    int Index_Map = 0;
-    Stage stage;
+
+    boolean Event = false;
+    int Index_Map = 0 , Index_Coordinates = 0;
+    int i = 0 ;  // i đại diện cho monster thứ bao nhiêu , ví dụ monster thứ nhất : Manager_Object_Car.get(0);
+    long  timeOfLastFrameSwtich =0;
     Button buttonMainMenu, buttonPlay_Start , buttonNext_Level, buttonMap_1 , buttonMap_2 , buttonMap_3;
     Scene scene_Play , scene_Background_1,scene_Background_2;
     Group Root_Menu , Root_BackGround_1 , Root_BackGround_2;
-    int angle = 0 ,Rotate_Gun = 0, x1 = 90 , M = 30 , Count_Number_Pass;
+    int Count_Pass = 0;
 
     public static void main(String[] args) {
         launch(args);
     }
-
+    GraphicsContext graphicsContext;
+    List<Monster_Car> Manager_Object_Car = new ArrayList<>(); // tạo một danh sách các đối tượng kiểu Monster_car.
     @Override
     public void start(Stage primaryStage) throws Exception {
         Canvas canvas = new Canvas(1400, 700);
-        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext = canvas.getGraphicsContext2D();
         CreateLinkImage createLinkImage = new CreateLinkImage();
         BackGround Background = new BackGround();
-
         // chọn bản đồ 1
         buttonMap_1 = new Button();
         buttonMap_1.setGraphic(createLinkImage.CreateImage_Map1());
@@ -41,7 +49,8 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Index_Map = 1;
-                 Match_Map_1(primaryStage, createLinkImage, Background, graphicsContext , canvas);
+                Index_Coordinates = 1;
+                Match_Map_1(primaryStage, createLinkImage, Background, graphicsContext , canvas);
             }
         });
         // Nút chọn bản đồ 2
@@ -53,6 +62,7 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Index_Map = 2;
+                Index_Coordinates = 2;
                 Match_Map_2(primaryStage, createLinkImage, Background, graphicsContext , canvas);
             }
         });
@@ -65,263 +75,403 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Index_Map = 3;
+                Index_Coordinates = 3;
                 Match_Map_3(primaryStage, createLinkImage, Background, graphicsContext , canvas);
             }
         });
+
         Root_Menu = new Group();
-        Root_Menu.getChildren().addAll( Background.drawBackground_Wait(graphicsContext),buttonMap_1,buttonMap_2,buttonMap_3); // Background Màn hình chờ .
+        Root_Menu.getChildren().addAll( Background.drawBackground_Wait(graphicsContext),buttonMap_1,
+                buttonMap_2,buttonMap_3); // Background Màn hình chờ .
         scene_Play = new Scene( Root_Menu ,1400,700 ) ;
+
         //Kết thúc.
+
         primaryStage.setScene(scene_Play);
-        // Match_Map_2(primaryStage, createLinkImage, Background, graphicsContext , canvas);
         primaryStage.show();
         Update_Match(graphicsContext);
     }
+
     // Value of speed can change : 1,2,5,10
+    public void Match_Map_1(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
+            , GraphicsContext graphicsContext , Canvas canvas){
+        // nút ấn NextLevel
+        buttonNext_Level = new Button();
+        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
+        buttonNext_Level.setLayoutX(1150);
+        buttonNext_Level.setLayoutY(280);
+        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+            }
+        });
+        //
+        //  Nút play bắt đầu cho xe chạy.
+        buttonPlay_Start = new Button();
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setLayoutX(1150);
+        buttonPlay_Start.setLayoutY(580);
+        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                  Event = true;
+            }
+        });
+        //
+        // Khởi tạo nút MainMenu và xử lý sự kiện .
+        buttonMainMenu = new Button();
+        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
+        buttonMainMenu.setLayoutX(1150);
+        buttonMainMenu.setLayoutY(650);
+        Root_BackGround_1 = new Group();
+        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
+        scene_Background_1 =  new Scene(Root_BackGround_1,1400,700);
+        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.setScene(scene_Play);
+                Event = false;
+                for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
+                    Return_1(j);
+                }
+            }
+        });
+        //
+        primaryStage.setScene(scene_Background_1);
+    }
 
-    int Speed_1 = 5 , Object_x1 = 1200 , Object_y1 = 300;
+    public void Match_Map_2(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
+            , GraphicsContext graphicsContext , Canvas canvas){
+        // nút ấn NextLevel
+        buttonNext_Level = new Button();
+        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
+        buttonNext_Level.setLayoutX(1150);
+        buttonNext_Level.setLayoutY(350);
+        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+            }
+        });
+        //
+        //  Nút play bắt đầu cho xe chạy.
+        buttonPlay_Start = new Button();
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setLayoutX(1150);
+        buttonPlay_Start.setLayoutY(450);
+        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                 Event = true;
+            }
+        });
+        //
+        // Khởi tạo nút MainMenu và xử lý sự kiện .
+        buttonMainMenu = new Button();
+        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
+        buttonMainMenu.setLayoutX(1150);
+        buttonMainMenu.setLayoutY(550);
+        Root_BackGround_1 = new Group();
+        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
+        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
+        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.setScene(scene_Play);
+                Event = false;
+                for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
+                    Return_2(j);
+                }
+            }
+        });
+        //
+        primaryStage.setScene(scene_Background_1);
+    }
 
+    public void Match_Map_3(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
+            , GraphicsContext graphicsContext , Canvas canvas){
+        // nút ấn NextLevel
+        buttonNext_Level = new Button();
+        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
+        buttonNext_Level.setLayoutX(1150);
+        buttonNext_Level.setLayoutY(350);
+        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (Count_Pass == 5){
+
+                }
+            }
+        });
+        //
+        //  Nút play bắt đầu cho xe chạy.
+        buttonPlay_Start = new Button();
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setLayoutX(1150);
+        buttonPlay_Start.setLayoutY(450);
+        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                  Event = true;
+            }
+        });
+        //
+        // Khởi tạo nút MainMenu và xử lý sự kiện .
+        buttonMainMenu = new Button();
+        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
+        buttonMainMenu.setLayoutX(1150);
+        buttonMainMenu.setLayoutY(550);
+        Root_BackGround_1 = new Group();
+        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
+        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
+        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.setScene(scene_Play);
+                Event = false;
+                for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
+                    Return_3(j);
+                }
+            }
+        });
+        //
+        primaryStage.setScene(scene_Background_1);
+    }
+
+    List<Integer> integers = new ArrayList<>(); // Mảng số nguyên chứa
     public void Update_Match(GraphicsContext gc) throws InterruptedException {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 // Khởi tạo hàm vẽ background Game và nhân vật.
                 BackGround Obj = new BackGround();
-                CreateLinkImage createLinkImage = new CreateLinkImage();
-                Object_In_Game  Object_1 ;
                 if (Index_Map == 1){  // chạy Map 1
                     Obj.draw_Background_Match_1(gc);
-                    Object_1 = new Object_1(Object_x1, Object_y1, Speed_1);
-                    gc.drawImage(Object_1.Create_Object(angle),Object_1.getValue_X(),Object_1.getValue_Y());
-                    gc.drawImage(Object_1.Create_Health(x1) , Object_1.getValue_X()+ M,Object_1.getValue_Y());
+                    if (Event == true){
+                        Render();
+                        for (int j = 0 ; j < integers.size() ; j++){ // Liên tục gọi sự di chuyển của các đối tượng
+                            // , nếu ko có vòng for này thì chỉ chạy đc 1 con một .
+                            Monster_Update_Move(j);
+                            Return_1(j);            // Nếu đi con xe đi đến vị trí cuối thì tọa đồ return lại từ đầu.
+                        }
+                        if( System.nanoTime() - timeOfLastFrameSwtich >= 1000000000 && i < Manager_Object_Car.size()){
+                            i++;
+                            integers.add(i);
+                            System.out.println( System.nanoTime() - timeOfLastFrameSwtich );
+                            timeOfLastFrameSwtich = System.nanoTime();
+                            System.out.println(Manager_Object_Car.size());
+                        }
+                    }
                     Obj.draw_Background_GREEN(gc);
-                    Event(Object_1);
-                    Update();
                 }
                 else if (Index_Map == 2){ // chạy Map 2
                     Obj.draw_Background_Match_2(gc);
+                    if (Event == true){
+                        Render();
+                        for (int j = 0 ; j < integers.size() ; j++){ // Liên tục gọi sự di chuyển của các đối tượng
+                            // , nếu ko có vòng for này thì chỉ chạy đc 1 con một .
+                            Monster_Update_Move_Map2(j);
+                            Return_2(j);            // Nếu đi con xe đi đến vị trí cuối thì tọa đồ return lại từ đầu.
+                        }
+                        if( System.nanoTime() - timeOfLastFrameSwtich >= 1000000000 && i < Manager_Object_Car.size()){
+                            i++;
+                            integers.add(i);
+                            System.out.println( System.nanoTime() - timeOfLastFrameSwtich );
+                            timeOfLastFrameSwtich = System.nanoTime();
+                            System.out.println(Manager_Object_Car.size());
+                        }
+                    }
+                    Obj.draw_Background_GREEN(gc);
                 }
                 else if (Index_Map == 3){ // Chạy Map 3
                     Obj.draw_Background_Match_3(gc);
+                    if (Event == true){
+                        Render();
+                        for (int j = 0 ; j < integers.size() ; j++){ // Liên tục gọi sự di chuyển của các đối tượng
+                            // , nếu ko có vòng for này thì chỉ chạy đc 1 con một .
+                                Monster_Update_Move_Map3(j);
+                                Return_3(j);
+                        }
+                        if( System.nanoTime() - timeOfLastFrameSwtich >= 1000000000 && i < Manager_Object_Car.size()){
+                            i++;
+                            integers.add(i);
+                            timeOfLastFrameSwtich = System.nanoTime();
+                        }
+                    }
+                    Obj.draw_Background_GREEN(gc);
                 }
             }
         };
         animationTimer.start();
+        // them doi tuong game o day
+        Manager_Object_Car.add(Create_Monster_Car());
+        Manager_Object_Car.add(Create_Monster_Car());
+        Manager_Object_Car.add(Create_Monster_Car());
+        Manager_Object_Car.add(Create_Monster_Car());
+        Manager_Object_Car.add(Create_Monster_Car());
+        Manager_Object_Car.add(Create_Monster_Car());
+        System.out.println(Manager_Object_Car.size());
     }
 
-    public void Action_Object_1(Object_In_Game Object_1){
-        Move_Object1(Object_1);
-        Direction_Object1(Object_1);
+    // Khởi tạo đối tượng xe .
+
+    public Monster_Car Create_Monster_Car(){
+        Monster_Car monster_car = new Monster_Car() ;
+        monster_car.image = new Image("file:/home/nguyen/Desktop/Image/233.png") ;
+        if (Index_Coordinates == 1){
+            monster_car.x = 1200 ;
+            monster_car.y = 300 ;
+        }
+        else if (Index_Coordinates == 2){
+            monster_car.x = 1200 ;
+            monster_car.y = 225 ;
+            System.out.println("2");
+        }
+        else if (Index_Coordinates == 3){
+            monster_car.x = 1200;
+            monster_car.y = 45;
+            System.out.println(Manager_Object_Car.get(0).getX());
+            System.out.println(Manager_Object_Car.get(0).getY());
+        }
+        monster_car.Speed = 5 ;
+        monster_car.Rotate = 0 ;
+        return monster_car ;
     }
-    public void Move_Object1(Object_In_Game Object_1){
-        if (Object_x1 > 610 ){ // Nếu xObject2 lớn nhỏ hơn đoạn rẽ thứ nhất
-            Object_x1 -= Object_1.getSpeed();   // đi thẳng
-        }
-        else if (Object_x1 == 610 && Object_y1 < 430){ // nếu dừng ở đoạn rẽ thứ nhất
-            Object_y1 += Object_1.getSpeed(); // tọa độ y tăng lên (di chuyển xuống phía dưới)
-        }
-        else if (Object_x1 > 350 && Object_y1 == 430){ // di chuyen sang PHAI
-            Object_x1 -= Object_1.getSpeed();; // di sang trai
-        }
-        else if (Object_x1 == 350 && Object_y1 > 150){
-            Object_y1 -= Object_1.getSpeed();; // di len
-        }
-        else if ( Object_x1 > 150 && Object_y1 == 150){
-            Object_x1 -= Object_1.getSpeed();; //di sang trai
-        }
-        else if (Object_x1 == 150 && Object_y1 < 360 ){
-            Object_y1 += Object_1.getSpeed();; // di xuong
-        }
-        else if (Object_x1 > -90 && Object_y1 == 360){
-            Object_x1 -= Object_1.getSpeed();; // di sang trai
-        }
+
+    // Ham` render chung .
+    public void Render(){
+        Manager_Object_Car.forEach(g->g.Render(graphicsContext));
+        Manager_Object_Car.forEach(g->g.Blood_bar(graphicsContext));
     }
-    public void Direction_Object1(Object_In_Game Object_1){
-        if (Object_x1 == 610 && Object_y1 == 300 && angle > -90){ // Quay đầu đoạn rẽ thứ nhất
-            Object_x1 += Object_1.getSpeed();; // cộng tọa độ của xObject2 để nó đứng im quay đầu .
-            angle = -90; // rẽ trái
+    //  Monster Map_1
+    public void Monster_Update_Move(int i){
+        if (Manager_Object_Car.get(i).getX() > 610 ){ // Nếu xObject2 lớn nhỏ hơn đoạn rẽ thứ nhất
+            Manager_Object_Car.get(i).Move_Left();
         }
-        else if (Object_x1 == 610 && Object_y1 == 430 && angle < 0){ // quay phải đoạn thứ nhất
-            Object_x1 += Object_1.getSpeed();;
-            angle =0;
+        else if (Manager_Object_Car.get(i).getX() == 610 && Manager_Object_Car.get(i).getY() < 430){ // nếu dừng ở đoạn rẽ thứ nhất
+            Manager_Object_Car.get(i).Move_Down();
+            Manager_Object_Car.get(i).setRotate(-90);
         }
-        else if (Object_x1 == 350 && Object_y1 == 430 && angle < 90){
-            Object_y1 += Object_1.getSpeed();;
-            angle = 90;
+        else if (Manager_Object_Car.get(i).getX() > 350 && Manager_Object_Car.get(i).getY() == 430){ // di chuyen sang PHAI
+            Manager_Object_Car.get(i).Move_Left(); // di sang trai
+            Manager_Object_Car.get(i).setRotate(0);
         }
-        else if (Object_x1 == 350 && Object_y1 == 150 && angle > 0){
-            Object_x1 += Object_1.getSpeed();;
-            angle = 0;
+        else if (Manager_Object_Car.get(i).getX() == 350 && Manager_Object_Car.get(i).getY() > 150){
+            Manager_Object_Car.get(i).Move_Up(); // di len
+            Manager_Object_Car.get(i).setRotate(90);
         }
-        else if (Object_x1 == 150 && Object_y1 == 150 && angle > -90){
-            Object_y1 -= Object_1.getSpeed();;
-            angle = -90;
+        else if ( Manager_Object_Car.get(i).getX() > 150 && Manager_Object_Car.get(i).getY() == 150){
+            Manager_Object_Car.get(i).Move_Left(); //di sang trai
+            Manager_Object_Car.get(i).setRotate(0);
         }
-        else if (Object_x1 == 150 && Object_y1 == 360 && angle < 0 ){
-            Object_x1 += Object_1.getSpeed();;
-            angle = 0;
+        else if (Manager_Object_Car.get(i).getX() == 150 && Manager_Object_Car.get(i).getY() < 360 ){
+            Manager_Object_Car.get(i).Move_Down(); // di xuong
+            Manager_Object_Car.get(i).setRotate(-90);
         }
-    }
-    public void Update(){
-        if (Object_x1 == -90){
-            Object_x1 = 1200;
-            Object_y1 = 300;
-            Count_Number_Pass();
-        }
-    }
-    void Event(Object_In_Game Object_1){
-        if (Event == 1){
-            Action_Object_1(Object_1);
+        else if (Manager_Object_Car.get(i).getX() > -90 && Manager_Object_Car.get(i).getY() == 360){
+            Manager_Object_Car.get(i).Move_Left(); // di sang trai
+            Manager_Object_Car.get(i).setRotate(0);
         }
     }
-    void MainMenu(){
-        Object_x1 = 1200;
-        Object_y1 = 300;
-        Event = 0;
+
+    //  Monster Map_2
+    public void Monster_Update_Move_Map2(int i){
+        if (Manager_Object_Car.get(i).getX() > 770){
+            Manager_Object_Car.get(i).Move_Left();
+        }
+        else if (Manager_Object_Car.get(i).getX() == 770 && Manager_Object_Car.get(i).getY() < 460){
+            Manager_Object_Car.get(i).Move_Down();
+            Manager_Object_Car.get(i).setRotate(-90);
+        }
+        else if (Manager_Object_Car.get(i).getX() > 405 && Manager_Object_Car.get(i).getY() == 460){
+            Manager_Object_Car.get(i).Move_Left();
+            Manager_Object_Car.get(i).setRotate(0);
+        }
+        else if (Manager_Object_Car.get(i).getX() == 405 && Manager_Object_Car.get(i).getY() > 50){
+            Manager_Object_Car.get(i).Move_Up();
+            Manager_Object_Car.get(i).setRotate(90);
+        }
+        else if (Manager_Object_Car.get(i).getX() > -90 && Manager_Object_Car.get(i).getY() == 50){
+            Manager_Object_Car.get(i).Move_Left();
+            Manager_Object_Car.get(i).setRotate(0);
+        }
     }
-    void Count_Number_Pass(){
-        Count_Number_Pass++;
-        if (Count_Number_Pass == 5 || Count_Number_Pass == 10) Event = 0;
+
+    // Monster Map_3
+    public void Monster_Update_Move_Map3(int i){
+        if (Manager_Object_Car.get(i).getX() > 735 && Manager_Object_Car.get(i).getY() == 45){
+            Manager_Object_Car.get(i).Move_Left();
+        }
+        else if (Manager_Object_Car.get(i).getX() == 735 && Manager_Object_Car.get(i).getY() < 195){
+            Manager_Object_Car.get(i).Move_Down();
+            Manager_Object_Car.get(i).setRotate(-90);
+        }
+        else if (Manager_Object_Car.get(i).getX() > 495 && Manager_Object_Car.get(i).getY() == 195){
+            Manager_Object_Car.get(i).Move_Left();
+            Manager_Object_Car.get(i).setRotate(0);
+        }
+        else if (Manager_Object_Car.get(i).getX() == 495 && Manager_Object_Car.get(i).getY() > 45 && Manager_Object_Car.get(i).getY() < 330){
+            Manager_Object_Car.get(i).Move_Up();
+            Manager_Object_Car.get(i).setRotate(90);
+        }
+        else if (Manager_Object_Car.get(i).getX() > 100 && Manager_Object_Car.get(i).getY() == 45){
+            Manager_Object_Car.get(i).Move_Left();
+            Manager_Object_Car.get(i).setRotate(0);
+        }
+        else if (Manager_Object_Car.get(i).getX() == 100 && Manager_Object_Car.get(i).getY() < 330){
+            Manager_Object_Car.get(i).Move_Down();
+            Manager_Object_Car.get(i).setRotate(-90);
+        }
+        else if (Manager_Object_Car.get(i).getX() < 820 && Manager_Object_Car.get(i).getY() == 330){
+            Manager_Object_Car.get(i).Move_Right();
+            Manager_Object_Car.get(i).setRotate(180);
+        }
+        else if (Manager_Object_Car.get(i).getX() == 820 && Manager_Object_Car.get(i).getY() < 550){
+            Manager_Object_Car.get(i).Move_Down();
+            Manager_Object_Car.get(i).setRotate(-90);
+        }
+        else if (Manager_Object_Car.get(i).getX() > 590 && Manager_Object_Car.get(i).getY() == 550){
+            Manager_Object_Car.get(i).Move_Left();
+            Manager_Object_Car.get(i).setRotate(0);
+        }
+        else if (Manager_Object_Car.get(i).getX() == 590 && Manager_Object_Car.get(i).getY() > 440){
+            Manager_Object_Car.get(i).Move_Up();
+            Manager_Object_Car.get(i).setRotate(90);
+        }
+        else if (Manager_Object_Car.get(i).getX() > 345 && Manager_Object_Car.get(i).getY() == 440){
+            Manager_Object_Car.get(i).Move_Left();
+            Manager_Object_Car.get(i).setRotate(0);
+        }
+        else if (Manager_Object_Car.get(i).getX() == 345 && Manager_Object_Car.get(i).getY() < 535){
+            Manager_Object_Car.get(i).Move_Down();
+            Manager_Object_Car.get(i).setRotate(-90);
+        }
+        else if (Manager_Object_Car.get(i).getX() > 0 && Manager_Object_Car.get(i).getY() == 535){
+            Manager_Object_Car.get(i).Move_Left();
+            Manager_Object_Car.get(i).setRotate(0);
+        }
     }
-    public void Match_Map_1(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
-    , GraphicsContext graphicsContext , Canvas canvas){
-        // nút ấn NextLevel
-        buttonNext_Level = new Button();
-        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
-        buttonNext_Level.setLayoutX(1150);
-        buttonNext_Level.setLayoutY(350);
-        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (Count_Number_Pass == 5){
-                    Event = 1;
-                    Speed_1 = 10;
-                }
-            }
-        });
-        //
-        //  Nút play bắt đầu cho xe chạy.
-        buttonPlay_Start = new Button();
-        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
-        buttonPlay_Start.setLayoutX(1150);
-        buttonPlay_Start.setLayoutY(450);
-        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Event = 1;
-            }
-        });
-        //
-        // Khởi tạo nút MainMenu và xử lý sự kiện .
-        buttonMainMenu = new Button();
-        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
-        buttonMainMenu.setLayoutX(1150);
-        buttonMainMenu.setLayoutY(550);
-        Root_BackGround_1 = new Group();
-        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
-        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
-        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                primaryStage.setScene(scene_Play);
-                MainMenu();
-            }
-        });
-        //
-        primaryStage.setScene(scene_Background_1);
+
+    // Khi đếm điểm c thì trả về tọa độ từ đầu.
+    public void Return_1(int i){
+        if (Manager_Object_Car.get(i).getX() <= 0 || Event == false){
+            Manager_Object_Car.get(i).setX(1200);
+            Manager_Object_Car.get(i).setY(300);
+            Manager_Object_Car.get(i).setRotate(0);
+        }
     }
-    public void Match_Map_2(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
-    , GraphicsContext graphicsContext , Canvas canvas){
-        // nút ấn NextLevel
-        buttonNext_Level = new Button();
-        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
-        buttonNext_Level.setLayoutX(1150);
-        buttonNext_Level.setLayoutY(350);
-        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (Count_Number_Pass == 5){
-                    Event = 1;
-                    Speed_1 = 10;
-                }
-            }
-        });
-        //
-        //  Nút play bắt đầu cho xe chạy.
-        buttonPlay_Start = new Button();
-        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
-        buttonPlay_Start.setLayoutX(1150);
-        buttonPlay_Start.setLayoutY(450);
-        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Event = 1;
-            }
-        });
-        //
-        // Khởi tạo nút MainMenu và xử lý sự kiện .
-        buttonMainMenu = new Button();
-        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
-        buttonMainMenu.setLayoutX(1150);
-        buttonMainMenu.setLayoutY(550);
-        Root_BackGround_1 = new Group();
-        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
-        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
-        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                primaryStage.setScene(scene_Play);
-                MainMenu();
-            }
-        });
-        //
-        primaryStage.setScene(scene_Background_1);
+    public void Return_2(int i){
+        if (Manager_Object_Car.get(i).getX() <= 0 || Event == false){
+            Manager_Object_Car.get(i).setX(1200);
+            Manager_Object_Car.get(i).setY(225);
+            Manager_Object_Car.get(i).setRotate(0);
+        }
     }
-    public void Match_Map_3(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
-    , GraphicsContext graphicsContext , Canvas canvas){
-        // nút ấn NextLevel
-        buttonNext_Level = new Button();
-        buttonNext_Level.setGraphic(createLinkImage.CreateImage_NextLevel());
-        buttonNext_Level.setLayoutX(1150);
-        buttonNext_Level.setLayoutY(350);
-        buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (Count_Number_Pass == 5){
-                    Event = 1;
-                    Speed_1 = 10;
-                }
-            }
-        });
-        //
-        //  Nút play bắt đầu cho xe chạy.
-        buttonPlay_Start = new Button();
-        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
-        buttonPlay_Start.setLayoutX(1150);
-        buttonPlay_Start.setLayoutY(450);
-        buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Event = 1;
-            }
-        });
-        //
-        // Khởi tạo nút MainMenu và xử lý sự kiện .
-        buttonMainMenu = new Button();
-        buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
-        buttonMainMenu.setLayoutX(1150);
-        buttonMainMenu.setLayoutY(550);
-        Root_BackGround_1 = new Group();
-        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
-        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
-        buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                primaryStage.setScene(scene_Play);
-                MainMenu();
-            }
-        });
-        //
-        primaryStage.setScene(scene_Background_1);
+    public void Return_3(int i){
+        if (( Manager_Object_Car.get(i).getX() <= 0 || Event == false)){
+            Manager_Object_Car.get(i).setX(1200);
+            Manager_Object_Car.get(i).setY(45);
+            Manager_Object_Car.get(i).setRotate(0);
+        }
     }
+
 }
