@@ -12,6 +12,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import kotlin.text.MatchNamedGroupCollection;
 
@@ -36,7 +39,7 @@ public class Main extends Application {
     List<Monster_Car> Manager_Object_Car = new ArrayList<>(); // tạo một danh sách các đối tượng kiểu Monster_car.
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Canvas canvas = new Canvas(1400, 700);
+        Canvas canvas = new Canvas(1400, 900);
         graphicsContext = canvas.getGraphicsContext2D();
         CreateLinkImage createLinkImage = new CreateLinkImage();
         BackGround Background = new BackGround();
@@ -93,6 +96,7 @@ public class Main extends Application {
     }
 
     // Value of speed can change : 1,2,5,10
+    int x = 0;
     public void Match_Map_1(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
             , GraphicsContext graphicsContext , Canvas canvas){
         // nút ấn NextLevel
@@ -114,18 +118,22 @@ public class Main extends Application {
         buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                  Event = true;
+                for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
+                    Return_Start_1(j);
+                }
+                Event = true;
             }
         });
-        //
+
         // Khởi tạo nút MainMenu và xử lý sự kiện .
         buttonMainMenu = new Button();
         buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
         buttonMainMenu.setLayoutX(1150);
         buttonMainMenu.setLayoutY(650);
-        Root_BackGround_1 = new Group();
+
+        Root_BackGround_1 = new Group(Lives(),Funds(),Wave());
         Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
-        scene_Background_1 =  new Scene(Root_BackGround_1,1400,700);
+        scene_Background_1 =  new Scene(Root_BackGround_1,1400,800);
         buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -161,7 +169,10 @@ public class Main extends Application {
         buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                 Event = true;
+                for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
+                    Return_Start_2(j);
+                }
+                Event = true;
             }
         });
         //
@@ -170,9 +181,9 @@ public class Main extends Application {
         buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
         buttonMainMenu.setLayoutX(1150);
         buttonMainMenu.setLayoutY(550);
-        Root_BackGround_1 = new Group();
+        Root_BackGround_1 = new Group(Funds(),Lives(),Wave());
         Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
-        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
+        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,800);
         buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -211,7 +222,10 @@ public class Main extends Application {
         buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                  Event = true;
+                for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
+                    Return_Start_3(j);
+                }
+                Event = true;
             }
         });
         //
@@ -220,9 +234,9 @@ public class Main extends Application {
         buttonMainMenu.setGraphic(createLinkImage.Create_MainMenu());
         buttonMainMenu.setLayoutX(1150);
         buttonMainMenu.setLayoutY(550);
-        Root_BackGround_1 = new Group();
+        Root_BackGround_1 = new Group(Lives(),Funds(),Wave());
         Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level);
-        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,700);
+        scene_Background_1 =  new Scene(Root_BackGround_1, 1400,800);
         buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -238,6 +252,7 @@ public class Main extends Application {
     }
 
     List<Integer> integers = new ArrayList<>(); // Mảng số nguyên chứa
+
     public void Update_Match(GraphicsContext gc) throws InterruptedException {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
@@ -258,7 +273,7 @@ public class Main extends Application {
                             integers.add(i);
                             System.out.println( System.nanoTime() - timeOfLastFrameSwtich );
                             timeOfLastFrameSwtich = System.nanoTime();
-                            System.out.println(Manager_Object_Car.size());
+                            //  System.out.println(Manager_Object_Car.size());
                         }
                     }
                     Obj.draw_Background_GREEN(gc);
@@ -275,9 +290,9 @@ public class Main extends Application {
                         if( System.nanoTime() - timeOfLastFrameSwtich >= 1000000000 && i < Manager_Object_Car.size()){
                             i++;
                             integers.add(i);
-                            System.out.println( System.nanoTime() - timeOfLastFrameSwtich );
+                            // System.out.println( System.nanoTime() - timeOfLastFrameSwtich );
                             timeOfLastFrameSwtich = System.nanoTime();
-                            System.out.println(Manager_Object_Car.size());
+                            // System.out.println(Manager_Object_Car.size());
                         }
                     }
                     Obj.draw_Background_GREEN(gc);
@@ -288,8 +303,8 @@ public class Main extends Application {
                         Render();
                         for (int j = 0 ; j < integers.size() ; j++){ // Liên tục gọi sự di chuyển của các đối tượng
                             // , nếu ko có vòng for này thì chỉ chạy đc 1 con một .
-                                Monster_Update_Move_Map3(j);
-                                Return_3(j);
+                            Monster_Update_Move_Map3(j);
+                            Return_3(j);
                         }
                         if( System.nanoTime() - timeOfLastFrameSwtich >= 1000000000 && i < Manager_Object_Car.size()){
                             i++;
@@ -309,7 +324,7 @@ public class Main extends Application {
         Manager_Object_Car.add(Create_Monster_Car());
         Manager_Object_Car.add(Create_Monster_Car());
         Manager_Object_Car.add(Create_Monster_Car());
-        System.out.println(Manager_Object_Car.size());
+        //System.out.println(Manager_Object_Car.size());
     }
 
     // Khởi tạo đối tượng xe .
@@ -324,13 +339,10 @@ public class Main extends Application {
         else if (Index_Coordinates == 2){
             monster_car.x = 1200 ;
             monster_car.y = 225 ;
-            System.out.println("2");
         }
         else if (Index_Coordinates == 3){
             monster_car.x = 1200;
             monster_car.y = 45;
-            System.out.println(Manager_Object_Car.get(0).getX());
-            System.out.println(Manager_Object_Car.get(0).getY());
         }
         monster_car.Speed = 5 ;
         monster_car.Rotate = 0 ;
@@ -453,25 +465,94 @@ public class Main extends Application {
 
     // Khi đếm điểm c thì trả về tọa độ từ đầu.
     public void Return_1(int i){
-        if (Manager_Object_Car.get(i).getX() <= 0 || Event == false){
+        if ((Manager_Object_Car.get(i).getX() <= 0 ) || Event == false){
+            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(300);
             Manager_Object_Car.get(i).setRotate(0);
         }
     }
+    public void Return_Start_1(int i){
+        Manager_Object_Car.get(i).setX(1200);
+        Manager_Object_Car.get(i).setY(300);
+        Manager_Object_Car.get(i).setRotate(0);
+    }
     public void Return_2(int i){
         if (Manager_Object_Car.get(i).getX() <= 0 || Event == false){
+            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(225);
             Manager_Object_Car.get(i).setRotate(0);
         }
     }
+    public void Return_Start_2(int i){
+        Manager_Object_Car.get(i).setX(1200);
+        Manager_Object_Car.get(i).setY(225);
+        Manager_Object_Car.get(i).setRotate(0);
+    }
     public void Return_3(int i){
         if (( Manager_Object_Car.get(i).getX() <= 0 || Event == false)){
+            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(45);
             Manager_Object_Car.get(i).setRotate(0);
         }
     }
+    public void Return_Start_3(int i){
+        Manager_Object_Car.get(i).setX(1200);
+        Manager_Object_Car.get(i).setY(45);
+        Manager_Object_Car.get(i).setRotate(0);
+    }
+
+    // Hiển thị điểm , ....
+    public Text Lives(){
+        Text text = new Text();
+        text.setX(10);
+        text.setY(750);
+        text.setFont(Font.font ("Verdana"));
+        text.setFont(new Font(32));
+        text.setFill(Color.RED);
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                text.setText("Lives " + x);
+            }
+        };
+        animationTimer.start();
+        return text;
+    }
+    public Text Funds(){
+        Text text = new Text();
+        text.setX(200);
+        text.setY(750);
+        text.setFont(Font.font ("Verdana"));
+        text.setFont(new Font(32));
+        text.setFill(Color.ORANGE);
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                text.setText("Funds " + x);
+            }
+        };
+        animationTimer.start();
+        return text;
+    }
+    public Text Wave(){
+        Text text = new Text();
+        text.setX(400);
+        text.setY(750);
+        text.setFont(Font.font ("Verdana"));
+        text.setFont(new Font(32));
+        text.setFill(Color.GREEN);
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                text.setText("Wave : " + x + "/" + 30);
+            }
+        };
+        animationTimer.start();
+        return text;
+    }
+    //
 
 }
