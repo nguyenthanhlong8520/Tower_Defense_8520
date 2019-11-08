@@ -9,7 +9,7 @@ public class Monster_Car extends Monster{
 
     public Image image;
     //public int x = -50, y = 45 ,Rotate , Speed , Health;
-    public int x , y , Rotate , Speed , Health;
+    public int x = 2000 , y = 2000 , Rotate , Speed , Health;
     private int Rotate_Blood = 90;
 
     @Override

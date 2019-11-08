@@ -23,13 +23,15 @@ import java.util.List;
 
 public class Main extends Application {
 
-    boolean Event = false;
+    int Event_ = 1;
+    boolean Event = false ;
+    boolean Event_n = false; //
     int Index_Map = 0 , Index_Coordinates = 0;
     int i = 0 ;  // i đại diện cho monster thứ bao nhiêu , ví dụ monster thứ nhất : Manager_Object_Car.get(0);
     long  timeOfLastFrameSwtich =0;
     Button buttonMainMenu, buttonPlay_Start , buttonNext_Level, buttonMap_1 , buttonMap_2 , buttonMap_3;
-    Scene scene_Play , scene_Background_1,scene_Background_2;
-    Group Root_Menu , Root_BackGround_1 , Root_BackGround_2;
+    Scene scene_Play , scene_Background_1;
+    Group Root_Menu , Root_BackGround_1 ;
     int Count_Pass = 0;
 
     public static void main(String[] args) {
@@ -87,16 +89,17 @@ public class Main extends Application {
         Root_Menu.getChildren().addAll( Background.drawBackground_Wait(graphicsContext),buttonMap_1,
                 buttonMap_2,buttonMap_3); // Background Màn hình chờ .
         scene_Play = new Scene( Root_Menu ,1400,700 ) ;
-
         //Kết thúc.
-
         primaryStage.setScene(scene_Play);
         primaryStage.show();
         Update_Match(graphicsContext);
+
     }
 
     // Value of speed can change : 1,2,5,10
-    int x = 0;
+
+    int x = 0; // Biến đếm của wave , lives , funds .
+
     public void Match_Map_1(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
             , GraphicsContext graphicsContext , Canvas canvas){
         // nút ấn NextLevel
@@ -137,6 +140,7 @@ public class Main extends Application {
         buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                x = 0;
                 primaryStage.setScene(scene_Play);
                 Event = false;
                 for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
@@ -187,6 +191,7 @@ public class Main extends Application {
         buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                x = 0;
                 primaryStage.setScene(scene_Play);
                 Event = false;
                 for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
@@ -209,7 +214,6 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (Count_Pass == 5){
-
                 }
             }
         });
@@ -240,6 +244,7 @@ public class Main extends Application {
         buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                x = 0;
                 primaryStage.setScene(scene_Play);
                 Event = false;
                 for (int j = 0 ; j < Manager_Object_Car.size() ; j++){
@@ -251,7 +256,7 @@ public class Main extends Application {
         primaryStage.setScene(scene_Background_1);
     }
 
-    List<Integer> integers = new ArrayList<>(); // Mảng số nguyên chứa
+    List<Integer> integers = new ArrayList<>(); // Mảng số nguyên explain ben duoi.
 
     public void Update_Match(GraphicsContext gc) throws InterruptedException {
         AnimationTimer animationTimer = new AnimationTimer() {
@@ -261,7 +266,7 @@ public class Main extends Application {
                 BackGround Obj = new BackGround();
                 if (Index_Map == 1){  // chạy Map 1
                     Obj.draw_Background_Match_1(gc);
-                    if (Event == true){
+                    if (Event == true  ){
                         Render();
                         for (int j = 0 ; j < integers.size() ; j++){ // Liên tục gọi sự di chuyển của các đối tượng
                             // , nếu ko có vòng for này thì chỉ chạy đc 1 con một .
@@ -270,7 +275,9 @@ public class Main extends Application {
                         }
                         if( System.nanoTime() - timeOfLastFrameSwtich >= 1000000000 && i < Manager_Object_Car.size()){
                             i++;
-                            integers.add(i);
+                            integers.add(i); // Mảng tăng liên quan đến vòng for bên trên .
+                            // sau mỗi 1s thì mảng tăng lên 1 , đến khi nào bằng với size của Manager_Object_Car.
+                            // =>> Monster_Update_Move(i) mỗi lần gọi trễ 1s 1 .
                             System.out.println( System.nanoTime() - timeOfLastFrameSwtich );
                             timeOfLastFrameSwtich = System.nanoTime();
                             //  System.out.println(Manager_Object_Car.size());
@@ -280,7 +287,7 @@ public class Main extends Application {
                 }
                 else if (Index_Map == 2){ // chạy Map 2
                     Obj.draw_Background_Match_2(gc);
-                    if (Event == true){
+                    if (Event == true ){
                         Render();
                         for (int j = 0 ; j < integers.size() ; j++){ // Liên tục gọi sự di chuyển của các đối tượng
                             // , nếu ko có vòng for này thì chỉ chạy đc 1 con một .
@@ -319,12 +326,13 @@ public class Main extends Application {
         animationTimer.start();
         // them doi tuong game o day
         Manager_Object_Car.add(Create_Monster_Car());
+        Manager_Object_Car.add(Create_Monster_UFO());
         Manager_Object_Car.add(Create_Monster_Car());
+        Manager_Object_Car.add(Create_Monster_UFO());
         Manager_Object_Car.add(Create_Monster_Car());
-        Manager_Object_Car.add(Create_Monster_Car());
-        Manager_Object_Car.add(Create_Monster_Car());
-        Manager_Object_Car.add(Create_Monster_Car());
-        //System.out.println(Manager_Object_Car.size());
+        Manager_Object_Car.add(Create_Monster_Car_());
+        Manager_Object_Car.add(Create_Monster_Car_());
+        Manager_Object_Car.add(Create_Monster_Car_());
     }
 
     // Khởi tạo đối tượng xe .
@@ -332,6 +340,44 @@ public class Main extends Application {
     public Monster_Car Create_Monster_Car(){
         Monster_Car monster_car = new Monster_Car() ;
         monster_car.image = new Image("file:/home/nguyen/Desktop/Image/233.png") ;
+        if (Index_Coordinates == 1){
+            monster_car.x = 1200 ;
+            monster_car.y = 300 ;
+        }
+        else if (Index_Coordinates == 2){
+            monster_car.x = 1200 ;
+            monster_car.y = 225 ;
+        }
+        else if (Index_Coordinates == 3){
+            monster_car.x = 1200;
+            monster_car.y = 45;
+        }
+        monster_car.Speed = 5 ;
+        monster_car.Rotate = 0 ;
+        return monster_car ;
+    }
+    public Monster_Car Create_Monster_UFO(){
+        Monster_Car monster_car = new Monster_Car() ;
+        monster_car.image = new Image("file:/home/nguyen/Desktop/Image/231.png") ;
+        if (Index_Coordinates == 1){
+            monster_car.x = 1200 ;
+            monster_car.y = 300 ;
+        }
+        else if (Index_Coordinates == 2){
+            monster_car.x = 1200 ;
+            monster_car.y = 225 ;
+        }
+        else if (Index_Coordinates == 3){
+            monster_car.x = 1200;
+            monster_car.y = 45;
+        }
+        monster_car.Speed = 5 ;
+        monster_car.Rotate = 0 ;
+        return monster_car ;
+    }
+    public Monster_Car Create_Monster_Car_(){
+        Monster_Car monster_car = new Monster_Car() ;
+        monster_car.image = new Image("file:/home/nguyen/Desktop/Image/239.png") ;
         if (Index_Coordinates == 1){
             monster_car.x = 1200 ;
             monster_car.y = 300 ;
@@ -384,7 +430,6 @@ public class Main extends Application {
             Manager_Object_Car.get(i).setRotate(0);
         }
     }
-
     //  Monster Map_2
     public void Monster_Update_Move_Map2(int i){
         if (Manager_Object_Car.get(i).getX() > 770){
@@ -407,7 +452,6 @@ public class Main extends Application {
             Manager_Object_Car.get(i).setRotate(0);
         }
     }
-
     // Monster Map_3
     public void Monster_Update_Move_Map3(int i){
         if (Manager_Object_Car.get(i).getX() > 735 && Manager_Object_Car.get(i).getY() == 45){
@@ -462,14 +506,16 @@ public class Main extends Application {
             Manager_Object_Car.get(i).setRotate(0);
         }
     }
+    // Khi đếm điểm cuối thì trả về tọa độ từ đầu.
 
-    // Khi đếm điểm c thì trả về tọa độ từ đầu.
     public void Return_1(int i){
         if ((Manager_Object_Car.get(i).getX() <= 0 ) || Event == false){
-            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(300);
             Manager_Object_Car.get(i).setRotate(0);
+        }
+        if ((Manager_Object_Car.get(i).getX() <= 0 )){
+            x++;
         }
     }
     public void Return_Start_1(int i){
@@ -479,10 +525,12 @@ public class Main extends Application {
     }
     public void Return_2(int i){
         if (Manager_Object_Car.get(i).getX() <= 0 || Event == false){
-            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(225);
             Manager_Object_Car.get(i).setRotate(0);
+        }
+        if ((Manager_Object_Car.get(i).getX() <= 0 )){
+            x++;
         }
     }
     public void Return_Start_2(int i){
@@ -492,10 +540,12 @@ public class Main extends Application {
     }
     public void Return_3(int i){
         if (( Manager_Object_Car.get(i).getX() <= 0 || Event == false)){
-            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(45);
             Manager_Object_Car.get(i).setRotate(0);
+        }
+        if ((Manager_Object_Car.get(i).getX() <= 0 )){
+            x++;
         }
     }
     public void Return_Start_3(int i){
@@ -554,5 +604,4 @@ public class Main extends Application {
         return text;
     }
     //
-
 }
