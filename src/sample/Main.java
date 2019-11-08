@@ -115,7 +115,7 @@ public class Main extends Application {
         //
         //  Nút play bắt đầu cho xe chạy.
         buttonPlay_Start = new Button();
-        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImagePlay());
         buttonPlay_Start.setLayoutX(1150);
         buttonPlay_Start.setLayoutY(580);
         buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
@@ -167,7 +167,7 @@ public class Main extends Application {
         //
         //  Nút play bắt đầu cho xe chạy.
         buttonPlay_Start = new Button();
-        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImagePlay());
         buttonPlay_Start.setLayoutX(1150);
         buttonPlay_Start.setLayoutY(450);
         buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
@@ -220,7 +220,7 @@ public class Main extends Application {
         //
         //  Nút play bắt đầu cho xe chạy.
         buttonPlay_Start = new Button();
-        buttonPlay_Start.setGraphic(createLinkImage.CreateImageStart());
+        buttonPlay_Start.setGraphic(createLinkImage.CreateImagePlay());
         buttonPlay_Start.setLayoutX(1150);
         buttonPlay_Start.setLayoutY(450);
         buttonPlay_Start.setOnAction(new EventHandler<ActionEvent>() {
@@ -509,13 +509,11 @@ public class Main extends Application {
     // Khi đếm điểm cuối thì trả về tọa độ từ đầu.
 
     public void Return_1(int i){
-        if ((Manager_Object_Car.get(i).getX() <= 0 ) || Event == false){
+        if ((Manager_Object_Car.get(i).getX() <= 0 ) ){
+            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(300);
             Manager_Object_Car.get(i).setRotate(0);
-        }
-        if ((Manager_Object_Car.get(i).getX() <= 0 )){
-            x++;
         }
     }
     public void Return_Start_1(int i){
@@ -524,13 +522,11 @@ public class Main extends Application {
         Manager_Object_Car.get(i).setRotate(0);
     }
     public void Return_2(int i){
-        if (Manager_Object_Car.get(i).getX() <= 0 || Event == false){
+        if (Manager_Object_Car.get(i).getX() <= 0 ){
+            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(225);
             Manager_Object_Car.get(i).setRotate(0);
-        }
-        if ((Manager_Object_Car.get(i).getX() <= 0 )){
-            x++;
         }
     }
     public void Return_Start_2(int i){
@@ -539,13 +535,11 @@ public class Main extends Application {
         Manager_Object_Car.get(i).setRotate(0);
     }
     public void Return_3(int i){
-        if (( Manager_Object_Car.get(i).getX() <= 0 || Event == false)){
+        if (( Manager_Object_Car.get(i).getX() <= 0 )){
+            x++;
             Manager_Object_Car.get(i).setX(1200);
             Manager_Object_Car.get(i).setY(45);
             Manager_Object_Car.get(i).setRotate(0);
-        }
-        if ((Manager_Object_Car.get(i).getX() <= 0 )){
-            x++;
         }
     }
     public void Return_Start_3(int i){

@@ -13,6 +13,8 @@ public class CreateLinkImage {
     public ImageView CreateImagePlay(){
         Image image1 = new Image("file:/home/nguyen/Desktop/Image/1.png");
         ImageView imageView1 = new ImageView(image1);
+        imageView1.setFitHeight(37);
+        imageView1.setFitWidth(120);
         return imageView1;
     }
     // Nap anh nut Tower_1
