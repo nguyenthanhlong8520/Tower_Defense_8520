@@ -5,10 +5,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class BackGround {
-
     // Backgound cua man hinh choi.
     public void draw_Background_Match_1(GraphicsContext gc) {
         Image BackGround = new Image("file:/home/nguyen/Desktop/Image/Bg.png");
+        //gc.drawImage(BackGround,0,0,1024,704);
         gc.drawImage(BackGround,0,0,1000,700);
     }
     //
@@ -21,7 +21,6 @@ public class BackGround {
         Image BackGround = new Image("file:/home/nguyen/Desktop/Image/Xuanloc.png");
         gc.drawImage(BackGround,0,0,1000,700);
     }
-
     // Background của màn hình chờ
     public  ImageView drawBackground_Wait(GraphicsContext gc){
         Image BackgroundMenu = new Image("file:/home/nguyen/Desktop/Image/a.jpg"); // hinh` thang ro bot
@@ -32,10 +31,8 @@ public class BackGround {
         imageView2.setFitWidth(1400);
         return imageView2;
     }
-
     public void draw_Background_GREEN(GraphicsContext gc) {
         Image Test = new Image("file:/home/nguyen/Desktop/Image/h10.jpg");
         gc.drawImage(Test,1000,0,400,700);
     }
-
 }

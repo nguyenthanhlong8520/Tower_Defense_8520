@@ -64,4 +64,14 @@ public class CreateLinkImage {
         imageView.setFitHeight(100);
         return imageView;
     }
+    //
+    public ImageView CreateImage_Tower(){
+        Image image = new Image("file:/home/nguyen/Desktop/Image/Tower.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        return imageView;
+    }
+
+
 }
