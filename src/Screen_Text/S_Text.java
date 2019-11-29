@@ -50,7 +50,7 @@ public class S_Text {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                text.setText("Wave : " + wave + "/" + 30);
+                text.setText("Wave : " + wave + "/" + 10);
             }
         };
         animationTimer.start();

@@ -5,13 +5,13 @@ import javafx.scene.image.ImageView;
 public class CreateLinkImage {
     //Nap anh nut MainMenu
     public ImageView Create_MainMenu(){
-        Image image = new Image("file:/home/nguyen/Desktop/Image/Menu.png");
+        Image image = new Image("file:src/AssetsKit/Menu.png");
         ImageView imageView = new ImageView(image);
         return imageView;
     }
     // Nap anh nut Play
     public ImageView CreateImagePlay(){
-        Image image1 = new Image("file:/home/nguyen/Desktop/Image/1.png");
+        Image image1 = new Image("file:src/AssetsKit/1.png");
         ImageView imageView1 = new ImageView(image1);
         imageView1.setFitHeight(37);
         imageView1.setFitWidth(120);
@@ -19,13 +19,13 @@ public class CreateLinkImage {
     }
     // Nap anh nut Tower_1
     public ImageView CreateImageTower_1(){
-        Image image1 = new Image("file:/home/nguyen/Desktop/Image/Tower1.png");
+        Image image1 = new Image("file:src/AssetsKit/Tower1.png");
         ImageView imageView1 = new ImageView(image1);
         return imageView1;
     }
     // Nap anh Start
     public ImageView CreateImageStart(){
-        Image image = new Image("file:/home/nguyen/Desktop/Image/Start.png");
+        Image image = new Image("file:src/AssetsKit/Start.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(37);
         imageView.setFitWidth(120);
@@ -33,7 +33,7 @@ public class CreateLinkImage {
     }
     // Nap anh nut Next_Level
     public ImageView CreateImage_NextLevel(){
-        Image image = new Image("file:/home/nguyen/Desktop/Image/NextLevel.png");
+        Image image = new Image("file:src/AssetsKit/NextLevel.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(120);
         imageView.setFitHeight(37);
@@ -41,7 +41,7 @@ public class CreateLinkImage {
     }
     // Ảnh nút bản đồ 1
     public ImageView CreateImage_Map1(){
-        Image image = new Image("file:/home/nguyen/Desktop/Image/Bg.png");
+        Image image = new Image("file:src/AssetsKit/Bg.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(100);
         imageView.setFitHeight(100);
@@ -49,7 +49,7 @@ public class CreateLinkImage {
     }
     // Ảnh nút bản đồ 2
     public ImageView CreateImage_Map2(){
-        Image image = new Image("file:/home/nguyen/Desktop/Image/Map2.jpg");
+        Image image = new Image("file:src/AssetsKit/Map2.jpg");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(100);
         imageView.setFitHeight(100);
@@ -58,20 +58,26 @@ public class CreateLinkImage {
     //
     // ảnh nút bản đồ 3
     public ImageView CreateImage_Map3(){
-        Image image = new Image("file:/home/nguyen/Desktop/Image/Xuanloc.png");
+        Image image = new Image("file:src/AssetsKit/Xuanloc.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(100);
         imageView.setFitHeight(100);
         return imageView;
     }
-    //
+    // // ảnh nút kéo thả tower
     public ImageView CreateImage_Tower(){
-        Image image = new Image("file:/home/nguyen/Desktop/Image/Tower.png");
+        Image image = new Image("file:src/AssetsKit/Tower.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(50);
         imageView.setFitWidth(50);
         return imageView;
     }
-
-
+    // ảnh nút sell
+    public ImageView Create_Sell(){
+        Image image = new Image("file:src/AssetsKit/sell.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(120);
+        imageView.setFitHeight(35);
+        return imageView;
+    }
 }
