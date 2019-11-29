@@ -5,6 +5,7 @@ import Object_In_Game.Monster_Car_1;
 import Object_In_Game.Monster_Car_2;
 import Object_In_Game.Monster_Car_3;
 import Screen_Text.Wave;
+import Tower.Tower;
 import Tower.Tower_1;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -19,9 +20,8 @@ import javafx.scene.control.Button;
 import Screen_Text.S_Text;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import Singleton.Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +44,7 @@ public class Main_Test_1 extends Application {
 
     GraphicsContext graphicsContext;
     List<Monster> Manager_Object_Car = new ArrayList<>(); // tạo một danh sách các đối tượng kiểu Monster_car.
-    List<Tower_1> test_towers = new ArrayList<>(); // danh sách đối tượng tháp;
-
+    List<Tower> Manager_towers = new ArrayList<>(); // danh sách đối tượng tháp;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -63,7 +62,6 @@ public class Main_Test_1 extends Application {
         buttonMap_1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // Music();
                 Index_Map = 1;
                 Index_Coordinates = 1;
                 Match_Map_1(primaryStage, createLinkImage, Background, graphicsContext , canvas);
@@ -76,6 +74,7 @@ public class Main_Test_1 extends Application {
         primaryStage.setScene(scene_Play);
         primaryStage.show();
         Update_Match(graphicsContext);
+        Singleton.getInstance().Music();
     }
 
     public void Match_Map_1(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
@@ -109,23 +108,23 @@ public class Main_Test_1 extends Application {
             Tower_X = Mouse_x;
             Tower_Y = Mouse_Y;
             if (Land_Tower(Tower_X, Tower_Y) == true) { // nếu ko trên đường thị đặt
-                test_towers.add(Create_Tower(Tower_X, Tower_Y)); // thêm 1 tower mới vào mảng .
+                Manager_towers.add(Create_Tower(Tower_X, Tower_Y)); // thêm 1 tower mới vào mảng .
             }
         });
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                for (int i = 0 ; i < test_towers.size() ; i++){  // liên tục render các tháp trong mảng + xoay.
-                    test_towers.get(i).Render(graphicsContext);
+                for (int i = 0; i < Manager_towers.size() ; i++){  // liên tục render các tháp trong mảng + xoay.
+                    Manager_towers.get(i).Render(graphicsContext);
                     if (Manager_Object_Car.size() != 0){
-                        for (int j = 0 ; j < test_towers.size() ; j++){
+                        for (int j = 0; j < Manager_towers.size() ; j++){
                             double shortestDistant = 0;
-                            Point2D tower = new Point2D(test_towers.get(i).getX(),test_towers.get(i).getY());
+                            Point2D tower = new Point2D(Manager_towers.get(i).getX(), Manager_towers.get(i).getY());
                             for (int k = 0 ; k < Manager_Object_Car.size() ; k++){
                                 Point2D enemy = new Point2D(Manager_Object_Car.get(k).getX(),Manager_Object_Car.get(k).getY());
-                                if (enemy.distance(tower) > shortestDistant && enemy.distance(tower) < test_towers.get(i).range){
+                                if (enemy.distance(tower) > shortestDistant && enemy.distance(tower) < Manager_towers.get(i).getRange()){
                                     shortestDistant = enemy.distance(tower);
-                                    test_towers.get(i).Rotate(Manager_Object_Car.get(k).getX(),Manager_Object_Car.get(k).getY(),graphicsContext);
+                                    Manager_towers.get(i).Rotate(Manager_Object_Car.get(k).getX(),Manager_Object_Car.get(k).getY(),graphicsContext);
                                 }
                             }
                         }
@@ -144,7 +143,7 @@ public class Main_Test_1 extends Application {
         button_Sell.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                test_towers.remove(0);
+                Manager_towers.remove(0);
             }
         });
         //
@@ -226,62 +225,47 @@ public class Main_Test_1 extends Application {
     // Khởi tạo đối tượng xe .
 
     public Monster Create_Monster_Car_1(){
-        Monster monster_car = new Monster_Car_1() ;
-        monster_car.image = new Image("file:/home/nguyen/Desktop/Image/233.png") ;
-        if (Index_Coordinates == 1){
-            monster_car.x = 1200 ;
-            monster_car.y = 300 ;
+        Image image = new Image("file:src/AssetsKit/233.png");
+        Monster monster_car = null;
+        if (Index_Coordinates == 1) {
+            monster_car = new Monster_Car_1(image,1200,300,0,wave.Speed(),0,90);
         }
-        else if (Index_Coordinates == 2){
-            monster_car.x = 1200 ;
-            monster_car.y = 225 ;
+        else if (Index_Coordinates == 2) {
+            monster_car = new Monster_Car_1(image,1200,225,0,wave.Speed(),0,90);
         }
-        else if (Index_Coordinates == 3){
-            monster_car.x = 1200;
-            monster_car.y = 45;
+        else if (Index_Coordinates == 3) {
+            monster_car = new Monster_Car_1(image,1200,45,0,wave.Speed(),0,90);
         }
-        monster_car.Speed = wave.Speed() ;
-        monster_car.Rotate = 0 ;
         return monster_car ;
     }
 
     public Monster Create_Monster_Car_2(){
-        Monster monster_car = new Monster_Car_2() ;
-        monster_car.image = new Image("file:/home/nguyen/Desktop/Image/237.png") ;
-        if (Index_Coordinates == 1){
-            monster_car.x = 1200 ;
-            monster_car.y = 300 ;
+        Image image = new Image("file:src/AssetsKit/237.png");
+        Monster monster_car = null;
+        if (Index_Coordinates == 1) {
+            monster_car = new Monster_Car_2(image,1200,300,0,wave.Speed(),0,90);
         }
-        else if (Index_Coordinates == 2){
-            monster_car.x = 1200 ;
-            monster_car.y = 225 ;
+        else if (Index_Coordinates == 2) {
+            monster_car = new Monster_Car_2(image,1200,225,0,wave.Speed(),0,90);
         }
-        else if (Index_Coordinates == 3){
-            monster_car.x = 1200;
-            monster_car.y = 45;
+        else if (Index_Coordinates == 3) {
+            monster_car = new Monster_Car_2(image,1200,45,0,wave.Speed(),0,90);
         }
-        monster_car.Speed = wave.Speed() ;
-        monster_car.Rotate = 0 ;
         return monster_car ;
     }
 
     public Monster Create_Monster_Car_3(){
-        Monster monster_car = new Monster_Car_3() ;
-        monster_car.image = new Image("file:/home/nguyen/Desktop/Image/231.png") ;
-        if (Index_Coordinates == 1){
-            monster_car.x = 1200 ;
-            monster_car.y = 300 ;
+        Image image = new Image("file:src/AssetsKit/231.png");
+        Monster monster_car = null;
+        if (Index_Coordinates == 1) {
+            monster_car = new Monster_Car_3(image,1200,300,0,wave.Speed(),0,90);
         }
-        else if (Index_Coordinates == 2){
-            monster_car.x = 1200 ;
-            monster_car.y = 225 ;
+        else if (Index_Coordinates == 2) {
+            monster_car = new Monster_Car_3(image,1200,225,0,wave.Speed(),0,90);
         }
-        else if (Index_Coordinates == 3){
-            monster_car.x = 1200;
-            monster_car.y = 45;
+        else if (Index_Coordinates == 3) {
+            monster_car = new Monster_Car_3(image,1200,45,0,wave.Speed(),0,90);
         }
-        monster_car.Speed = wave.Speed() ;
-        monster_car.Rotate = 0 ;
         return monster_car ;
     }
 
@@ -341,17 +325,10 @@ public class Main_Test_1 extends Application {
             M_i -- ;
         }
     }
-    //
-    public void Return_Start_1(int i){
-        Manager_Object_Car.get(i).setX(1200);
-        Manager_Object_Car.get(i).setY(300);
-        Manager_Object_Car.get(i).setRotate(0);
-    }
+
     // Tạo Tower
-    public Tower_1 Create_Tower(double x , double y){
-        Tower_1 tower = new Tower_1();
-        tower.x = x;
-        tower.y = y;
+    public Tower Create_Tower(double x , double y){
+        Tower tower = new Tower_1(x,y,90,200);
         return tower;
     }
     // Điều kiện để không cho đặt trên đường .
@@ -402,16 +379,6 @@ public class Main_Test_1 extends Application {
         }
 
     }
-
-    //
-    MediaPlayer mediaPlayer;
-    public void Music(){
-        Media media = new Media("file:/home/nguyen/Desktop/Image/LOL_ms.mp3");
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
-    }
-    //
-
 }
 
 

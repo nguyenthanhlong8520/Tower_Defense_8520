@@ -5,9 +5,19 @@ import javafx.scene.image.Image;
 
 public abstract class Monster {
 
-    public Image image;
-    public double x = 2000 , y = 2000 , Rotate , Speed , Health;
-    public int Rotate_Blood = 90;
+    protected Image image;
+    protected double x , y , Rotate , Speed , Health;
+    protected int Rotate_Blood ;
+
+    public Monster(Image image, double x, double y, double rotate, double speed, double health, int rotate_blood) {
+        this.image = image;
+        this.x = x;
+        this.y = y;
+        this.Rotate = rotate;
+        this.Speed = speed;
+        this.Health = health;
+        this.Rotate_Blood = rotate_blood;
+    }
 
     abstract public void Render(GraphicsContext graphicsContext);
     abstract public void Blood_bar(GraphicsContext graphicsContext);

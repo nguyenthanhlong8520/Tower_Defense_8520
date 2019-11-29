@@ -19,24 +19,8 @@ import java.util.List;
 
 public class Tower_1 extends Tower {
 
-    public double x, y;
-    double rotate = 90;
-    public double range = 200;
-    GraphicsContext graphicsContext;
-    Image bullet= new Image("file:src/AssetsKit/bullet.png");
-    ImageView bulletIV =new ImageView(bullet);
-
-    public double getX() {
-        return x;
-    }
-    public void setX(double x) {
-        this.x = x;
-    }
-    public double getY() {
-        return y;
-    }
-    public void setY(double y) {
-        this.y = y;
+    public Tower_1(double x, double y, double rotate, double range) {
+        super(x, y, rotate, range);
     }
 
     @Override
@@ -67,6 +51,23 @@ public class Tower_1 extends Tower {
         else if (target.distance(tower) <= range && X < x){
             rotate = -tower.angle(target,reference);
         }
+    }
+
+    public double getX() {
+        return x;
+    }
+    public void setX(double x) {
+        this.x = x;
+    }
+    public double getY() {
+        return y;
+    }
+    @Override
+    public double getRange() {
+        return range;
+    }
+    public void setY(double y) {
+        this.y = y;
     }
 
 }

@@ -7,6 +7,10 @@ import javafx.scene.paint.Color;
 
 public class Monster_Car_3 extends Monster{
 
+    public Monster_Car_3(Image image, double x, double y, double rotate, double speed, double health, int rotate_blood) {
+        super(image, x, y, rotate, speed, health, rotate_blood);
+    }
+
     @Override
     public void Render(GraphicsContext graphicsContext) {
         ImageView imageView = new ImageView(image); // xe vang`
