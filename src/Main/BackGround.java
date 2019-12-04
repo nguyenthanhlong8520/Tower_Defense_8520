@@ -35,4 +35,11 @@ public class BackGround {
         Image Test = new Image("file:src/AssetsKit/h10.jpg");
         gc.drawImage(Test,1000,0,400,700);
     }
+    //
+    public void draw_Background_Game_Over(GraphicsContext gc) {
+        //  Image BackGround = new Image(Over"file:/home/nguyen/Desktop/Image/Bg.png");
+        Image BackGround = new Image("file:src/AssetsKit/Game_Over.jpg");
+        //gc.drawImage(BackGround,0,0,1024,704);
+        gc.drawImage(BackGround,0,0,1000,700);
+    }
 }

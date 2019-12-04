@@ -80,4 +80,14 @@ public class CreateLinkImage {
         imageView.setFitHeight(35);
         return imageView;
     }
+    // Anh game_over
+    public Image Create_Game_Over(){
+        Image image = new Image("file:src/AssetsKit/Game_Over.jpg");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(1000);
+        imageView.setFitHeight(1000);
+        imageView.setX(200);
+        imageView.setY(200);
+        return image;
+    }
 }

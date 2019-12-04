@@ -3,6 +3,8 @@ package Object_In_Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import java.util.List;
+
 public abstract class Monster {
 
     protected Image image;
@@ -19,8 +21,15 @@ public abstract class Monster {
         this.Rotate_Blood = rotate_blood;
     }
 
+    public  double getHealth() {
+        return Health;
+    }
+    public void setHealth(double health) {
+        Health = health;
+    }
+
     abstract public void Render(GraphicsContext graphicsContext);
-    abstract public void Blood_bar(GraphicsContext graphicsContext);
+    abstract public void Blood_bar(GraphicsContext graphicsContext ,  List<Monster> List_Monster );
     abstract public void Move_Up();
     abstract public void Move_Down();
     abstract public void Move_Left();

@@ -6,8 +6,36 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class S_Text {
-    public int x;
-    public int wave;
+    public int Lives = 30;
+    public int wave = 10;
+    public int Funds = 300;
+
+    public int getLives() {
+        return Lives;
+    }
+    public void setLives(int lives) {
+        Lives = lives;
+    }
+    public int getFunds() {
+        return Funds;
+    }
+    public void setFunds(int funds) {
+        Funds = funds;
+    }
+    public int getX() {
+        return Lives = 30;
+    }
+    public void setX(int x) {
+        this.Lives = x;
+    }
+    public int getWave() {
+        return wave;
+    }
+    public void setWave(int wave) {
+        this.wave = wave;
+    }
+
+
     public javafx.scene.text.Text Lives(){
         javafx.scene.text.Text text = new javafx.scene.text.Text();
         text.setX(10);
@@ -18,7 +46,7 @@ public class S_Text {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                text.setText("Lives " + x);
+                text.setText("Lives " + Lives );
             }
         };
         animationTimer.start();
@@ -34,7 +62,7 @@ public class S_Text {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                text.setText("Funds " + x);
+                text.setText("Funds " + Funds );
             }
         };
         animationTimer.start();
@@ -57,15 +85,4 @@ public class S_Text {
         return text;
     }
 
-    public void Change_X(){
-        x ++;
-    }
-
-    public int getWave() {
-        return wave;
-    }
-
-    public void setWave(int wave) {
-        this.wave = wave;
-    }
 }

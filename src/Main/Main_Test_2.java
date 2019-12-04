@@ -27,16 +27,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main_Test_2 extends Application {
-    boolean Event = false  , Land_Tower = false;
-    int Index_Map = 0 , Index_Coordinates = 0;
+    boolean Event = false;
+    int Index_Map = 0 , Index_Coordinates = 0 ;
     int M_i = 0 ;  // i đại diện cho monster thứ bao nhiêu , ví dụ monster thứ nhất : Manager_Object_Car.get(0);
-    long  timeOfLastFrameSwtich =0;
+    long timeOfLastFrameSwitch = 0 ;
     Button buttonMainMenu, buttonPlay_Start , buttonNext_Level, buttonMap_1, buttonTower , button_Sell;
-    Scene scene_Play , scene_Background_1;
+    Scene scene_Play , scene_Background_1 ;
     Group Root_Menu , Root_BackGround_1 ;
-    double Mouse_x , Mouse_Y , Tower_X , Tower_Y;
-    S_Text text = new S_Text();
-    Wave wave = new Wave();
+    double Mouse_x , Mouse_Y , Tower_X , Tower_Y ;
+    S_Text text = new S_Text() ;
+    Wave wave = new Wave() ;
+    CreateLinkImage createLinkImage = new CreateLinkImage() ;
+    Canvas canvas ;
 
     public static void main(String[] args) {
         launch(args);
@@ -49,32 +51,21 @@ public class Main_Test_2 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Canvas canvas = new Canvas(1400, 900);
+        canvas = new Canvas(1400, 900);
         graphicsContext = canvas.getGraphicsContext2D();
-        CreateLinkImage createLinkImage = new CreateLinkImage();
-
         BackGround Background = new BackGround();
         // chọn bản đồ 1
-        buttonMap_1 = new Button();
-        buttonMap_1.setGraphic(createLinkImage.CreateImage_Map1());
-        buttonMap_1.setLayoutX(500);
-        buttonMap_1.setLayoutY(450);
-        buttonMap_1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Index_Map = 1;
-                Index_Coordinates = 1;
-                Match_Map_1(primaryStage, createLinkImage, Background, graphicsContext , canvas);
-            }
-        });
-        Root_Menu = new Group();
-        Root_Menu.getChildren().addAll( Background.drawBackground_Wait(graphicsContext),buttonMap_1); // Background Màn hình chờ .
-        scene_Play = new Scene( Root_Menu ,1400,700 ) ;
-        //Kết thúc.
+        Button_Choice_Menu(primaryStage,Background,canvas);
         primaryStage.setScene(scene_Play);
         primaryStage.show();
         Update_Match(graphicsContext);
-        Singleton.getInstance().Music();
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                Singleton.getInstance().Music_Background();
+            }
+        };
+        animationTimer.start();
     }
 
     public void Match_Map_1(Stage primaryStage,CreateLinkImage createLinkImage, BackGround Background
@@ -87,53 +78,12 @@ public class Main_Test_2 extends Application {
         buttonNext_Level.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (Manager_Object_Car.size() == 0){
+                if (Manager_Object_Car.size() == 0 && text.getWave() >= 1){
                     wave.Rise_Wave(); // Tăng wave.
                     Limit_Monster(); // Thêm monster vào mảng.
                 }
             }
         });
-
-        // Keo tha tower
-        buttonTower = new Button(); // button để chọn tháp.
-        buttonTower.setGraphic(createLinkImage.CreateImage_Tower());
-        buttonTower.setLayoutX(1150);
-        buttonTower.setLayoutY(190);
-        buttonTower.setOnMouseDragged(e -> { // trả về tọa độ x , y hiện tại của con trỏ chuột
-            Mouse_x = e.getSceneX();
-            Mouse_Y = e.getSceneY();
-        });
-        buttonTower.setOnMouseReleased(e -> {
-            // gán như vậy để lấy được vị trí cuối cùng (kiểu như khi ko kéo nữa thì lấy tọa độ ấy để đặt tháp).
-            Tower_X = Mouse_x;
-            Tower_Y = Mouse_Y;
-            if (Land_Tower(Tower_X, Tower_Y) == true) { // nếu ko trên đường thị đặt
-                Manager_towers.add(Create_Tower(Tower_X, Tower_Y)); // thêm 1 tower mới vào mảng .
-            }
-        });
-        AnimationTimer animationTimer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-                for (int i = 0; i < Manager_towers.size() ; i++){  // liên tục render các tháp trong mảng + xoay.
-                    Manager_towers.get(i).Render(graphicsContext);
-                    if (Manager_Object_Car.size() != 0){
-                        for (int j = 0; j < Manager_towers.size() ; j++){
-                            double shortestDistant = 0;
-                            Point2D tower = new Point2D(Manager_towers.get(i).getX(), Manager_towers.get(i).getY());
-                            for (int k = 0 ; k < Manager_Object_Car.size() ; k++){
-                                Point2D enemy = new Point2D(Manager_Object_Car.get(k).getX(),Manager_Object_Car.get(k).getY());
-                                if (enemy.distance(tower) > shortestDistant && enemy.distance(tower) < Manager_towers.get(i).getRange()){
-                                    shortestDistant = enemy.distance(tower);
-                                    Manager_towers.get(i).Rotate(Manager_Object_Car.get(k).getX(),Manager_Object_Car.get(k).getY(),graphicsContext);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        animationTimer.start();
-        //
 
         //  Sell tower
         button_Sell = new Button();
@@ -177,7 +127,7 @@ public class Main_Test_2 extends Application {
         buttonMainMenu.setLayoutY(650);
 
         Root_BackGround_1 = new Group(text.Lives(), text.Funds(), text.Wave());
-        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level,buttonTower,button_Sell);
+        Root_BackGround_1.getChildren().addAll(canvas,buttonMainMenu,buttonPlay_Start,buttonNext_Level,Button_Tower(),button_Sell);
         scene_Background_1 =  new Scene(Root_BackGround_1,1400,800);
         buttonMainMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -201,19 +151,33 @@ public class Main_Test_2 extends Application {
             public void handle(long l) {
                 update_Wave();
                 // Khởi tạo hàm vẽ background Game và nhân vật.
-                BackGround Obj = new BackGround();
+                 BackGround Obj = new BackGround();
                 if (Index_Map == 1){
                     Obj.draw_Background_Match_1(gc);
+                   // Obj.draw_Background_Game_Over(gc);
                     if (Event == true  ){
                         Render();
-                        if( System.nanoTime() - timeOfLastFrameSwtich >= 2000000000 && M_i < Manager_Object_Car.size()){
-                            // M_i++;
+                        if( System.nanoTime() - timeOfLastFrameSwitch > (2000000000)  && M_i < Manager_Object_Car.size()){
                             integers.add(M_i++);
-                            timeOfLastFrameSwtich = System.nanoTime();
+                            timeOfLastFrameSwitch = System.nanoTime();
                         }
                         for ( int i = 0 ; i < integers.size() ; i++ ){
                             Monster_Update_Move(i);
-                            Delete_Object(i);
+                        }
+                        for (int i = 0 ; i < Manager_Object_Car.size() ; i++){
+                            if (Manager_Object_Car.get(i).getHealth() < 0){
+                                Delete_Object_2(i);
+                                text.setFunds(text.getFunds() + 10);
+                            }
+                            if (Manager_Object_Car.get(i).getX() < 0){
+                                Delete_Object_2(i);
+                                text.setLives(text.getLives() - 1);
+                            }
+                            if (text.getLives() <= 0){
+                                //Obj.draw_Background_Game_Over(gc);
+                                graphicsContext.drawImage(createLinkImage.Create_Game_Over(),0,0,1000,700);
+                                Event = false;
+                            }
                         }
                     }
                     Obj.draw_Background_GREEN(gc);
@@ -228,13 +192,13 @@ public class Main_Test_2 extends Application {
         Image image = new Image("file:src/AssetsKit/233.png");
         Monster monster_car = null;
         if (Index_Coordinates == 1) {
-            monster_car = new Monster_Car_1(image,1200,300,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_1(image,1200,300,0,wave.Speed(),150,90);
         }
         else if (Index_Coordinates == 2) {
-            monster_car = new Monster_Car_1(image,1200,225,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_1(image,1200,225,0,wave.Speed(),150,90);
         }
         else if (Index_Coordinates == 3) {
-            monster_car = new Monster_Car_1(image,1200,45,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_1(image,1200,45,0,wave.Speed(),150,90);
         }
         return monster_car ;
     }
@@ -243,13 +207,13 @@ public class Main_Test_2 extends Application {
         Image image = new Image("file:src/AssetsKit/237.png");
         Monster monster_car = null;
         if (Index_Coordinates == 1) {
-            monster_car = new Monster_Car_2(image,1200,300,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_2(image,1200,300,0,wave.Speed(),150,90);
         }
         else if (Index_Coordinates == 2) {
-            monster_car = new Monster_Car_2(image,1200,225,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_2(image,1200,225,0,wave.Speed(),150,90);
         }
         else if (Index_Coordinates == 3) {
-            monster_car = new Monster_Car_2(image,1200,45,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_2(image,1200,45,0,wave.Speed(),150,90);
         }
         return monster_car ;
     }
@@ -258,13 +222,13 @@ public class Main_Test_2 extends Application {
         Image image = new Image("file:src/AssetsKit/231.png");
         Monster monster_car = null;
         if (Index_Coordinates == 1) {
-            monster_car = new Monster_Car_3(image,1200,300,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_3(image,1200,300,0,wave.Speed(),150,90);
         }
         else if (Index_Coordinates == 2) {
-            monster_car = new Monster_Car_3(image,1200,225,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_3(image,1200,225,0,wave.Speed(),150,90);
         }
         else if (Index_Coordinates == 3) {
-            monster_car = new Monster_Car_3(image,1200,45,0,wave.Speed(),0,90);
+            monster_car = new Monster_Car_3(image,1200,45,0,wave.Speed(),150,90);
         }
         return monster_car ;
     }
@@ -272,7 +236,7 @@ public class Main_Test_2 extends Application {
     // Ham` render chung .
     public void Render(){
         Manager_Object_Car.forEach(g->g.Render(graphicsContext));
-        Manager_Object_Car.forEach(g->g.Blood_bar(graphicsContext));
+        Manager_Object_Car.forEach(g->g.Blood_bar(graphicsContext,Manager_Object_Car));
     }
     //  Monster Map_1
     public void Monster_Update_Move(int i){
@@ -307,28 +271,14 @@ public class Main_Test_2 extends Application {
     // Xóa đối tượng lần lượt.
     public void Delete_Object(int i){
         if ((Manager_Object_Car.get(i).getX() <= 0 ) ){
-            text.Change_X();
-            // giảm các chỉ số của mảng để xóa đối tượng.
             Manager_Object_Car.remove(i);
             integers.remove(i);
             M_i --;
         }
     }
-    // Hàm xóa đối tượng một cách ngầu nhiên .
-    public void Return_1_(int i){
-        //  System.out.println(i);
-        if ( (Manager_Object_Car.get(i).getX() <= 300 && i == 2 ) ){
-            text.Change_X();
-            // giảm các chỉ số của mảng để xóa đối tượng.
-            Manager_Object_Car.remove(2);
-            integers.remove(2);
-            M_i -- ;
-        }
-    }
-
     // Tạo Tower
     public Tower Create_Tower(double x , double y){
-        Tower tower = new Tower_1(x,y,90,200);
+        Tower tower = new Tower_1(x,y,90,85,Root_BackGround_1);
         return tower;
     }
     // Điều kiện để không cho đặt trên đường .
@@ -377,6 +327,75 @@ public class Main_Test_2 extends Application {
                 Manager_Object_Car.add(Create_Monster_Car_3());
             }
         }
+    }
+
+    public Scene Button_Choice_Menu( Stage primaryStage , BackGround Background , Canvas canvas){
+        buttonMap_1 = new Button();
+        buttonMap_1.setGraphic(createLinkImage.CreateImage_Map1());
+        buttonMap_1.setLayoutX(500);
+        buttonMap_1.setLayoutY(450);
+        buttonMap_1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Index_Map = 1;
+                Index_Coordinates = 1;
+                Match_Map_1(primaryStage, createLinkImage, Background, graphicsContext , canvas);
+            }
+        });
+        Root_Menu = new Group();
+        Root_Menu.getChildren().addAll( Background.drawBackground_Wait(graphicsContext),buttonMap_1); // Background Màn hình chờ .
+        scene_Play = new Scene( Root_Menu ,1400,700 ) ;
+        return scene_Play;
+    }
+
+    public Button Button_Tower(){
+        buttonTower = new Button(); // button để chọn tháp.
+        buttonTower.setGraphic(createLinkImage.CreateImage_Tower());
+        buttonTower.setLayoutX(1150);
+        buttonTower.setLayoutY(190);
+        buttonTower.setOnMouseDragged(e -> { // trả về tọa độ x , y hiện tại của con trỏ chuột
+            Mouse_x = e.getSceneX();
+            Mouse_Y = e.getSceneY();
+        });
+        buttonTower.setOnMouseReleased(e -> {
+            // gán như vậy để lấy được vị trí cuối cùng (kiểu như khi ko kéo nữa thì lấy tọa độ ấy để đặt tháp).
+            Tower_X = Mouse_x;
+            Tower_Y = Mouse_Y;
+            if (Land_Tower(Tower_X, Tower_Y) == true && text.getFunds() - 100 >= 0) { // nếu ko trên đường thị đặt
+                Manager_towers.add(Create_Tower(Tower_X, Tower_Y)); // thêm 1 tower mới vào mảng .
+                text.setFunds(text.getFunds() - 100); // Nếu đủ tiền thì được đăt.
+            }
+        });
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                for (int i = 0; i < Manager_towers.size() ; i++){  // liên tục render các tháp trong mảng + xoay.
+                    Manager_towers.get(i).Render(graphicsContext);
+                    if (Manager_Object_Car.size() != 0){
+                        for (int j = 0; j < Manager_towers.size() ; j++){
+                            double shortestDistance = 1000;
+                            Point2D tower = new Point2D(Manager_towers.get(i).getX(), Manager_towers.get(i).getY());
+                            for (int k = 0 ; k < Manager_Object_Car.size() ; k++){
+                                Point2D enemy = new Point2D(Manager_Object_Car.get(k).getX(),Manager_Object_Car.get(k).getY());
+                                while (enemy.distance(tower) < shortestDistance && enemy.distance(tower) < Manager_towers.get(i).getRange()) {
+                                    shortestDistance = enemy.distance(tower);
+                                    Manager_towers.get(i).Rotate(Manager_Object_Car.get(k).getX(),Manager_Object_Car.get(k).getY(),Manager_Object_Car);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        animationTimer.start();
+        return buttonTower;
+    }
+    // xoa doi tuong
+    public void Delete_Object_2(int i){
+            // giảm các chỉ số của mảng để xóa đối tượng.
+            Manager_Object_Car.remove(i);
+            integers.remove(i);
+            M_i --;
     }
 }
 
