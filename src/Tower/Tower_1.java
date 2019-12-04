@@ -70,31 +70,28 @@ public class Tower_1 extends Tower {
     long time = 0;
 
     public void shoot(double X, double Y , List<Monster> List_Monster){
-        ImageView bulletIV = new ImageView(bullet);
-        bulletIV.setVisible(false);
+        ImageView bullet = new ImageView(this.bullet);
+        bullet.setVisible(false);
         Path projectilePath = new Path();
         LineTo lineTo = new LineTo(X , Y);
-        bulletIV.setVisible(true);
-        bulletIV.setFitHeight(32);
-        bulletIV.setFitWidth(32);
-
+        bullet.setVisible(true);
+        bullet.setFitHeight(32);
+        bullet.setFitWidth(32);
         projectilePath.getElements().add(new MoveTo(x, y));
         projectilePath.getElements().add(lineTo);
-
         PathTransition projectile = new PathTransition();
         projectile.setDuration(Duration.millis(150));
-        projectile.setNode(bulletIV);
+        projectile.setNode(bullet);
         projectile.setPath(projectilePath);
         projectile.setCycleCount(0);
         projectile.setAutoReverse(false);
         if (System.nanoTime() - time > 100000000){
-            root.getChildren().add(bulletIV);
+            root.getChildren().add(bullet);
             time = System.nanoTime();
         }
         projectile.setOnFinished(action -> {
-            root.getChildren().remove(bulletIV);
+            root.getChildren().remove(bullet);
         });projectile.play();
-
         for ( int i = 0; i < List_Monster.size() ; i++){
             if (List_Monster.get(i).getX() == lineTo.getX()){
                 List_Monster.get(i).setHealth(List_Monster.get(i).getHealth() - 1);
@@ -105,8 +102,7 @@ public class Tower_1 extends Tower {
         }
     }
 
-//    private Media media_bullet = new Media("file:/home/nguyen/Desktop/Image/bullet.mp3");
-//    private MediaPlayer mediaPlayer_Gun = new MediaPlayer(media_bullet);
+
 
     public double getX() {
         return x;
