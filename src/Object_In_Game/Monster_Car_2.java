@@ -57,24 +57,23 @@ public class Monster_Car_2 extends Monster{
 
         for (int i = 0 ; i < List_Monster.size() ; i++){
             if(List_Monster.get(i).getHealth() > 120  && List_Monster.get(i).getHealth() <= 150){
-                graphicsContext.drawImage(rotatedImage5,x+37,y);
+                // graphicsContext.drawImage(rotatedImage5,x+37,y);
             }
-            else if (List_Monster.get(i).getHealth() > 100 && List_Monster.get(i).getHealth() < 120){
+            else if (List_Monster.get(i).getHealth() > 100 && List_Monster.get(i).getHealth() <= 120){
                 graphicsContext.drawImage(rotatedImage4,x+37,y);
             }
-            else if (List_Monster.get(i).getHealth() > 80 && List_Monster.get(i).getHealth() < 100){
+            else if (List_Monster.get(i).getHealth() > 80 && List_Monster.get(i).getHealth() <= 100){
                 graphicsContext.drawImage(rotatedImage3,x+37,y);
             }
-            else if (List_Monster.get(i).getHealth() > 60 && List_Monster.get(i).getHealth() < 80){
+            else if (List_Monster.get(i).getHealth() > 60 && List_Monster.get(i).getHealth() <= 80){
                 graphicsContext.drawImage(rotatedImage2,x+37,y);
             }
-            else if (List_Monster.get(i).getHealth() > 30 && List_Monster.get(i).getHealth() < 60 ){
+            else if (List_Monster.get(i).getHealth() > 30 && List_Monster.get(i).getHealth() <= 60 ){
                 graphicsContext.drawImage(rotatedImage1,x+37,y);
             }
         }
-
-        //graphicsContext.drawImage(rotatedImage5,x+37,y);
     }
+
 
 
     @Override

@@ -2,57 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/10.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/Game_Over.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/bullet.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/min2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/min3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/min4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/min5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssetsKit/min6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/2_Rocket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/Bum.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/Range.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/bullet_Green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/bullet_rocket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/bullet_rocket_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/fire.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/min1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssetsKit/rocket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tower/Music.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tower/Tower_2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tower/Tower_3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/10.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/10.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/Base.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/Base.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/LOL_ms.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/LOL_ms.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/Tower.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/Tower.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/background_ms.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/background_ms.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/base.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/base.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/bullet.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/bullet.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/bullet.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/bullet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/gun.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/gun.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min2.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min3.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min4.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min5.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/min5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile269.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile269.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile273.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile273.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile274.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile274.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile275.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile275.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile287.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile287.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile292.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/AssetsKit/towerDefense_tile292.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/ImageInButton/CreateLinkImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/ImageInButton/CreateLinkImage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/META-INF/Tower_Defense.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/META-INF/Tower_Defense.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/BackGround.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/BackGround.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$15.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$17.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$18.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$19.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$15.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$17.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$18.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$19.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$4.class" afterDir="false" />
@@ -60,28 +43,39 @@
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2$9.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Main/Main_Test_2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/S_Text.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster_Car_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster_Car_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster_Car_2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster_Car_2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster_Car_3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Object_In_Game/Monster_Car_3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/Wave.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Screen_Text/Wave.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Singleton/Singleton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Singleton/Singleton$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Singleton/Singleton$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Singleton/Singleton$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Singleton/Singleton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Singleton/Singleton.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Tower/Tower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Tower/Tower.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense/Tower/Tower_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense/Tower/Tower_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/10.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/10.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/Base.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/Base.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/LOL_ms.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/LOL_ms.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/Tower.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/Tower.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/background_ms.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/background_ms.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/base.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/base.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/bullet.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/bullet.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/bullet.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/bullet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/gun.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/gun.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/min2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/min2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/min3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/min3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/min4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/min4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/min5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/min5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile269.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile269.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile273.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile273.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile274.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile274.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile275.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile275.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile287.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile287.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile292.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssetsKit/towerDefense_tile292.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageInButton/CreateLinkImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageInButton/CreateLinkImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/BackGround.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/BackGround.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Main_Test_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main_Test_1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Main_Test_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main_Test_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Object_In_Game/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Object_In_Game/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Object_In_Game/Monster_Car_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Object_In_Game/Monster_Car_1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Object_In_Game/Monster_Car_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Object_In_Game/Monster_Car_2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Object_In_Game/Monster_Car_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Object_In_Game/Monster_Car_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Screen_Text/S_Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Screen_Text/S_Text.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Screen_Text/Wave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Screen_Text/Wave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Singleton/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Singleton/Singleton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tower/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tower/Tower.java" afterDir="false" />
@@ -210,20 +204,6 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main.Main" />
-      <module name="Tower_Defense" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="Tower_Defense" />
@@ -236,6 +216,20 @@
       </extension>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <module name="Tower_Defense" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -310,8 +304,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test_n" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.Test_n" />
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.tEST" />
       <module name="Tower_Defense" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -320,12 +320,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -364,10 +358,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main_Test_2" />
-        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.tEST" />
         <item itemvalue="Application.Main_Test_1" />
         <item itemvalue="Application.Test_Music" />
-        <item itemvalue="Application.Main_Test_1" />
       </list>
     </recent_temporary>
   </component>
@@ -422,11 +415,12 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2583" y="361" width="583" height="393" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575113070037" />
-    <state x="1160" y="274" width="380" height="567" key="#com.intellij.ide.util.MemberChooser" timestamp="1575460935133">
-      <screen x="0" y="34" width="3840" height="1046" />
+    <state x="2500" y="248" width="339" height="586" key="#com.intellij.ide.util.MemberChooser" timestamp="1575571542398">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="765" y="274" width="380" height="567" key="#com.intellij.ide.util.MemberChooser/0.34.1920.1046@0.34.1920.1046" timestamp="1575367521739" />
     <state x="1160" y="274" width="380" height="567" key="#com.intellij.ide.util.MemberChooser/0.34.3840.1046@0.34.3840.1046" timestamp="1575460935133" />
+    <state x="2500" y="248" width="339" height="586" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575571542398" />
     <state x="1920" y="34" width="879" height="1046" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1575125416854">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -437,65 +431,65 @@
     <state x="740" y="337" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1575363886713" />
     <state x="740" y="337" key="FileChooserDialogImpl/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1575391752400" />
     <state x="2660" y="313" width="430" height="489" key="FileChooserDialogImpl/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575111739581" />
-    <state width="1920" height="187" key="GridCell.Tab.0.bottom" timestamp="1575482203281">
+    <state width="1920" height="106" key="GridCell.Tab.0.bottom" timestamp="1575573669708">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1920" height="104" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1575449407973" />
-    <state width="1920" height="146" key="GridCell.Tab.0.bottom/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756106" />
-    <state width="1920" height="187" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575482203281" />
-    <state width="1920" height="187" key="GridCell.Tab.0.center" timestamp="1575482203281">
+    <state width="1920" height="66" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1575539970892" />
+    <state width="1920" height="162" key="GridCell.Tab.0.bottom/0.34.3840.1046@0.34.3840.1046" timestamp="1575547702538" />
+    <state width="1920" height="106" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575573669708" />
+    <state width="1920" height="106" key="GridCell.Tab.0.center" timestamp="1575573669707">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1920" height="104" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1575449407972" />
-    <state width="1920" height="146" key="GridCell.Tab.0.center/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756106" />
-    <state width="1920" height="187" key="GridCell.Tab.0.center/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575482203281" />
-    <state width="1920" height="187" key="GridCell.Tab.0.left" timestamp="1575482203281">
+    <state width="1920" height="66" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1575539970891" />
+    <state width="1920" height="162" key="GridCell.Tab.0.center/0.34.3840.1046@0.34.3840.1046" timestamp="1575547702537" />
+    <state width="1920" height="106" key="GridCell.Tab.0.center/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575573669707" />
+    <state width="1920" height="106" key="GridCell.Tab.0.left" timestamp="1575573669707">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1920" height="104" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1575449407972" />
-    <state width="1920" height="146" key="GridCell.Tab.0.left/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756105" />
-    <state width="1920" height="187" key="GridCell.Tab.0.left/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575482203281" />
-    <state width="1920" height="187" key="GridCell.Tab.0.right" timestamp="1575482203281">
+    <state width="1920" height="66" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1575539970891" />
+    <state width="1920" height="162" key="GridCell.Tab.0.left/0.34.3840.1046@0.34.3840.1046" timestamp="1575547702537" />
+    <state width="1920" height="106" key="GridCell.Tab.0.left/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575573669707" />
+    <state width="1920" height="106" key="GridCell.Tab.0.right" timestamp="1575573669707">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1920" height="104" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1575449407972" />
-    <state width="1920" height="146" key="GridCell.Tab.0.right/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756106" />
-    <state width="1920" height="187" key="GridCell.Tab.0.right/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575482203281" />
-    <state width="1920" height="146" key="GridCell.Tab.1.bottom" timestamp="1575466756108">
-      <screen x="0" y="34" width="3840" height="1046" />
-    </state>
-    <state width="1920" height="146" key="GridCell.Tab.1.bottom/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756108" />
-    <state width="1920" height="146" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575125222448" />
-    <state width="1920" height="146" key="GridCell.Tab.1.center" timestamp="1575466756107">
-      <screen x="0" y="34" width="3840" height="1046" />
-    </state>
-    <state width="1920" height="146" key="GridCell.Tab.1.center/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756107" />
-    <state width="1920" height="146" key="GridCell.Tab.1.center/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575125222448" />
-    <state width="1920" height="146" key="GridCell.Tab.1.left" timestamp="1575466756107">
-      <screen x="0" y="34" width="3840" height="1046" />
-    </state>
-    <state width="1920" height="146" key="GridCell.Tab.1.left/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756107" />
-    <state width="1920" height="146" key="GridCell.Tab.1.left/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575125222448" />
-    <state width="1920" height="146" key="GridCell.Tab.1.right" timestamp="1575466756107">
-      <screen x="0" y="34" width="3840" height="1046" />
-    </state>
-    <state width="1920" height="146" key="GridCell.Tab.1.right/0.34.3840.1046@0.34.3840.1046" timestamp="1575466756107" />
-    <state width="1920" height="146" key="GridCell.Tab.1.right/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575125222448" />
-    <state x="2550" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1575482057457">
+    <state width="1920" height="66" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1575539970892" />
+    <state width="1920" height="162" key="GridCell.Tab.0.right/0.34.3840.1046@0.34.3840.1046" timestamp="1575547702538" />
+    <state width="1920" height="106" key="GridCell.Tab.0.right/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575573669707" />
+    <state width="1920" height="146" key="GridCell.Tab.1.bottom" timestamp="1575558306052">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="630" y="389" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1575363889231" />
+    <state width="1920" height="146" key="GridCell.Tab.1.bottom/0.34.3840.1046@0.34.3840.1046" timestamp="1575544214856" />
+    <state width="1920" height="146" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575558306052" />
+    <state width="1920" height="146" key="GridCell.Tab.1.center" timestamp="1575558306052">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="146" key="GridCell.Tab.1.center/0.34.3840.1046@0.34.3840.1046" timestamp="1575544214855" />
+    <state width="1920" height="146" key="GridCell.Tab.1.center/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575558306052" />
+    <state width="1920" height="146" key="GridCell.Tab.1.left" timestamp="1575558306052">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="146" key="GridCell.Tab.1.left/0.34.3840.1046@0.34.3840.1046" timestamp="1575544214855" />
+    <state width="1920" height="146" key="GridCell.Tab.1.left/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575558306052" />
+    <state width="1920" height="146" key="GridCell.Tab.1.right" timestamp="1575558306052">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="146" key="GridCell.Tab.1.right/0.34.3840.1046@0.34.3840.1046" timestamp="1575544214855" />
+    <state width="1920" height="146" key="GridCell.Tab.1.right/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575558306052" />
+    <state x="2550" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1575558127867">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="630" y="389" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1575511229639" />
     <state x="630" y="389" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1575391735409" />
-    <state x="2550" y="367" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575482057457" />
+    <state x="2550" y="367" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575558127867" />
     <state x="624" y="255" key="run.anything.popup" timestamp="1575433097324">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="624" y="255" key="run.anything.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1575433097324" />
-    <state x="2543" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1575478610611">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="1246" y="290" width="1344" height="657" key="search.everywhere.popup" timestamp="1575541925364">
+      <screen x="0" y="34" width="3840" height="1046" />
     </state>
-    <state x="623" y="290" width="672" height="657" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1575437928142" />
-    <state x="1246" y="290" width="1344" height="657" key="search.everywhere.popup/0.34.3840.1046@0.34.3840.1046" timestamp="1575461485089" />
+    <state x="623" y="290" width="672" height="657" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1575512426109" />
+    <state x="1246" y="290" width="1344" height="657" key="search.everywhere.popup/0.34.3840.1046@0.34.3840.1046" timestamp="1575541925364" />
     <state x="2543" y="264" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1575478610611" />
   </component>
   <component name="XDebuggerManager">

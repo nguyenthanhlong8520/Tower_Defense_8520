@@ -16,7 +16,7 @@ public abstract class Tower {
     public Tower() {
     }
 
-    public Tower(double x, double y, double rotate, double range, Group root ) {
+    public Tower(double x, double y, double rotate, double range, Group root) {
         this.x = x;
         this.y = y;
         this.rotate = rotate;
@@ -25,8 +25,8 @@ public abstract class Tower {
     }
 
     public abstract void Render(GraphicsContext graphicsContext);
-    public abstract void Rotate(double x, double y, List<Monster> List_Monster);
-    public abstract void shoot(double X, double Y, List<Monster> List_Monster);
+    public abstract void Rotate(double x, double y, List<Monster> List_Monster );
+    public abstract void shoot(double X, double Y, List<Monster> List_Monster , double rotate);
 
 
     public int getK() {

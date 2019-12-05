@@ -1,24 +1,18 @@
 package Tower;
 import Object_In_Game.Monster;
 import Singleton.Singleton;
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
-import Singleton.Singleton;
 
 import java.util.List;
 
@@ -26,6 +20,7 @@ import java.util.List;
 public class Tower_1 extends Tower {
 
     Image bullet = new Image("file:src/AssetsKit/bullet.png");
+    int Dame = 4;
 
     public Tower_1() {}
 
@@ -37,6 +32,7 @@ public class Tower_1 extends Tower {
     public void Render( GraphicsContext graphicsContext ) {
         Image image = new Image("file:src/AssetsKit/Tower.png");
         Image image1 = new Image("file:src/AssetsKit/Base.png");
+        Image image2 = new Image("file:src/AssetsKit/Range.png");
         //
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(40);
@@ -48,6 +44,7 @@ public class Tower_1 extends Tower {
         //
         graphicsContext.drawImage(image1, x - 30, y - 30);
         graphicsContext.drawImage(rotatedImage, x - 23, y - 20);
+        graphicsContext.drawImage(image2, x - 65, y - 65);
     }
 
     @Override // X , Y : toa do enemy ; x,y : toa do tower;
@@ -57,52 +54,66 @@ public class Tower_1 extends Tower {
         Point2D reference = new Point2D(x,0);
         if ( target.distance(tower) < range && X > x ) {
             rotate = tower.angle(target, reference);
-            shoot(X,Y , List_Monster);
-            Singleton.getInstance().Music_Game_Over();
+            shoot(X,Y , List_Monster ,rotate );
         }
         else if (target.distance(tower) < range && X < x){
             rotate = -tower.angle(target,reference);
-            shoot( X,Y ,List_Monster);
-            Singleton.getInstance().Music_Game_Over();
+            shoot( X,Y ,List_Monster,rotate );
         }
     }
 
     long time = 0;
-
-    public void shoot(double X, double Y , List<Monster> List_Monster){
+    public void shoot(double X, double Y , List<Monster> List_Monster,double rotate){
         ImageView bullet = new ImageView(this.bullet);
         bullet.setVisible(false);
-        Path projectilePath = new Path();
-        LineTo lineTo = new LineTo(X , Y);
         bullet.setVisible(true);
-        bullet.setFitHeight(32);
-        bullet.setFitWidth(32);
-        projectilePath.getElements().add(new MoveTo(x, y));
-        projectilePath.getElements().add(lineTo);
-        PathTransition projectile = new PathTransition();
-        projectile.setDuration(Duration.millis(150));
-        projectile.setNode(bullet);
-        projectile.setPath(projectilePath);
-        projectile.setCycleCount(0);
-        projectile.setAutoReverse(false);
+        bullet.setX(-1000);
+        bullet.setX(-1000);
+        bullet.setFitHeight(35);
+        bullet.setFitWidth(35);
+
+        Path path = new Path();
+        path.getElements().add(new MoveTo(x, y));
+
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.millis(100));
+        pathTransition.setNode(bullet);
+        pathTransition.setPath(path);
+        pathTransition.setCycleCount(0);
+        pathTransition.setAutoReverse(false);
+
         if (System.nanoTime() - time > 100000000){
+            LineTo lineTo = new LineTo(X , Y);
+            path.getElements().add(lineTo);
             root.getChildren().add(bullet);
+            try {
+                Music music = new Music();
+                music.PLay_Shoot();
+            }catch (Exception e){
+            }
             time = System.nanoTime();
+            pathTransition.play();
+            Support_Shoot(List_Monster,lineTo.getX());
         }
-        projectile.setOnFinished(action -> {
+        pathTransition.setOnFinished(action -> {
             root.getChildren().remove(bullet);
-        });projectile.play();
+        });
+    }
+
+    public void Support_Shoot(List<Monster> List_Monster , double x){ //x = lineto.getX;
         for ( int i = 0; i < List_Monster.size() ; i++){
-            if (List_Monster.get(i).getX() == lineTo.getX()){
-                List_Monster.get(i).setHealth(List_Monster.get(i).getHealth() - 1);
-                if (List_Monster.get(i).getHealth() == 0){
+            if (List_Monster.get(i).getX() == x) {
+                List_Monster.get(i).setHealth(List_Monster.get(i).getHealth() - getDame());
+                if (List_Monster.get(i).getHealth() == 0) {
                     setK(i);
                 }
             }
         }
     }
 
-
+    public int getDame() {
+        return Dame;
+    }
 
     public double getX() {
         return x;

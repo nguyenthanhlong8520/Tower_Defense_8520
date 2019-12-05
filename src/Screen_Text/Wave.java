@@ -15,22 +15,25 @@ public class Wave {
     public int Limit_Monster(){
         switch (getWave()){
             case 1 :
-                return 10;
+                return 7;
             case 2:
-                return 25;
+                return 9;
             case 3:
+                return 11;
             case 4:
-                return 31;
+                return 13;
             case 5:
-                return 35;
+                return 15;
             case 6:
-                return 40;
+                return 17;
             case 7:
+                return 19;
             case 8:
+                return 21;
             case 9:
-                return 45;
+                return 23;
             case 10:
-                return 50;
+                return 25;
         }
         return 0;
     }
@@ -43,12 +46,37 @@ public class Wave {
             case 4:
             case 5:
             case 6:
-            case 7:
-                return 5;
+            case 7:                return 5;
             case 8:
             case 9:
             case 10:
                 return 10;
+        }
+        return 0;
+    }
+
+    public int Blood(){
+        switch (getWave()){
+            case 1:
+                return 100;
+            case 2:
+                return 150;
+            case 3:
+                return 170;
+            case 4:
+                return 190;
+            case 5:
+                return 210;
+            case 6:
+                return 230;
+            case 7:
+                return 250;
+            case 8:
+                return 300;
+            case 9:
+                return 400;
+            case 10:
+                return 480;
         }
         return 0;
     }

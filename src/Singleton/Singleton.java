@@ -41,8 +41,7 @@ public class Singleton {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                mediaPlayer_Gun.setAutoPlay(true);
-                mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+                mediaPlayer_Gun.play();
             }
         };
         animationTimer.start();

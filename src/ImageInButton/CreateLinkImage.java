@@ -72,6 +72,22 @@ public class CreateLinkImage {
         imageView.setFitWidth(50);
         return imageView;
     }
+    //
+    public ImageView CreateImage_Tower_Rocket1(){
+        Image image = new Image("file:src/AssetsKit/rocket.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        return imageView;
+    }
+    //
+    public ImageView CreateImage_Tower_Rocket2(){
+        Image image = new Image("file:src/AssetsKit/2_Rocket.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        return imageView;
+    }
     // ảnh nút sell
     public ImageView Create_Sell(){
         Image image = new Image("file:src/AssetsKit/sell.png");
