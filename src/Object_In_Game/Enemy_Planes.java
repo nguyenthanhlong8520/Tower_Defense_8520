@@ -1,20 +1,24 @@
 package Object_In_Game;
+
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+
 import java.util.List;
 
-public class Monster_Car_1 extends Monster{
+public class Enemy_Planes extends Enemy{
 
-    public Monster_Car_1(Image image , double x , double y , double Rotate , double Speed , double Health , int Rotate_Blood){
-        super(image,x,y,Rotate,Speed,Health,Rotate_Blood);
+    public Enemy_Planes(Image image, double x, double y, double rotate, double speed, double health, int rotate_blood, GraphicsContext graphicsContext) {
+        super(image, x, y, rotate, speed, health, rotate_blood, graphicsContext);
     }
 
     @Override
-    public void Render(GraphicsContext graphicsContext) {
-        ImageView imageView = new ImageView(image); // xe vang`
+    public void Render() {
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(150);
+        imageView.setFitHeight(150);
         imageView.setRotate(Rotate);
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
@@ -23,7 +27,7 @@ public class Monster_Car_1 extends Monster{
     }
 
     @Override
-    public void Blood_bar(GraphicsContext graphicsContext  ,  List<Monster> List_Monster ) {
+    public void Blood_bar(List<Enemy> list_Enemy) {
         ImageView imageView6 = new ImageView("file:src/AssetsKit/min6.png");
         imageView6.setRotate(Rotate_Blood);
         SnapshotParameters params6 = new SnapshotParameters();
@@ -60,23 +64,23 @@ public class Monster_Car_1 extends Monster{
         params1.setFill(Color.TRANSPARENT);
         Image rotatedImage1 = imageView1.snapshot(params1, null);
 
-                for (int i = 0 ; i < List_Monster.size() ; i++){
-                    if (List_Monster.get(i).getHealth() > 100 && List_Monster.get(i).getHealth() < 150){
-                        graphicsContext.drawImage(rotatedImage5,x+37,y);
-                    }
-                    else if (List_Monster.get(i).getHealth() > 80 && List_Monster.get(i).getHealth() < 100){
-                        graphicsContext.drawImage(rotatedImage4,x+37,y);
-                    }
-                    else if (List_Monster.get(i).getHealth() > 60 && List_Monster.get(i).getHealth() < 80){
-                        graphicsContext.drawImage(rotatedImage3,x+37,y);
-                    }
-                    else if (List_Monster.get(i).getHealth() > 40 && List_Monster.get(i).getHealth() < 60 ){
-                        graphicsContext.drawImage(rotatedImage2,x+37,y);
-                    }
-                    else if (List_Monster.get(i).getHealth() > 20 && List_Monster.get(i).getHealth() < 40 ){
-                        graphicsContext.drawImage(rotatedImage1,x+37,y);
-                    }
-                }
+        for (int i = 0; i < list_Enemy.size() ; i++){
+            if (list_Enemy.get(i).getHealth() > 100 && list_Enemy.get(i).getHealth() < 150){
+                graphicsContext.drawImage(rotatedImage5,x+37,y);
+            }
+            else if (list_Enemy.get(i).getHealth() > 80 && list_Enemy.get(i).getHealth() < 100){
+                graphicsContext.drawImage(rotatedImage4,x+37,y);
+            }
+            else if (list_Enemy.get(i).getHealth() > 60 && list_Enemy.get(i).getHealth() < 80){
+                graphicsContext.drawImage(rotatedImage3,x+37,y);
+            }
+            else if (list_Enemy.get(i).getHealth() > 40 && list_Enemy.get(i).getHealth() < 60 ){
+                graphicsContext.drawImage(rotatedImage2,x+37,y);
+            }
+            else if (list_Enemy.get(i).getHealth() > 20 && list_Enemy.get(i).getHealth() < 40 ){
+                graphicsContext.drawImage(rotatedImage1,x+37,y);
+            }
+        }
     }
 
     @Override
@@ -121,6 +125,5 @@ public class Monster_Car_1 extends Monster{
     public void setSpeed(double speed) {
         Speed = speed;
     }
-
 
 }

@@ -5,13 +5,14 @@ import javafx.scene.image.Image;
 
 import java.util.List;
 
-public abstract class Monster {
+public abstract class Enemy {
 
     protected Image image;
     protected double x , y , Rotate , Speed , Health;
     protected int Rotate_Blood ;
+    protected GraphicsContext graphicsContext;
 
-    public Monster(Image image, double x, double y, double rotate, double speed, double health, int rotate_blood) {
+    public Enemy(Image image, double x, double y, double rotate, double speed, double health, int rotate_blood , GraphicsContext graphicsContext) {
         this.image = image;
         this.x = x;
         this.y = y;
@@ -19,6 +20,7 @@ public abstract class Monster {
         this.Speed = speed;
         this.Health = health;
         this.Rotate_Blood = rotate_blood;
+        this.graphicsContext = graphicsContext;
     }
 
     public  double getHealth() {
@@ -28,8 +30,8 @@ public abstract class Monster {
         Health = health;
     }
 
-    abstract public void Render(GraphicsContext graphicsContext);
-    abstract public void Blood_bar(GraphicsContext graphicsContext ,  List<Monster> List_Monster );
+    abstract public void Render();
+    abstract public void Blood_bar(List<Enemy> list_Enemy);
     abstract public void Move_Up();
     abstract public void Move_Down();
     abstract public void Move_Left();

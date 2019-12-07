@@ -1,9 +1,9 @@
 //package Main;
 //import ImageInButton.CreateLinkImage;
-//import Object_In_Game.Monster;
-//import Object_In_Game.Monster_Car_1;
-//import Object_In_Game.Monster_Car_2;
-//import Object_In_Game.Monster_Car_3;
+//import Object_In_Game.Enemy;
+//import Object_In_Game.Enemy_Car_Red;
+//import Object_In_Game.Enemy_Car_Blue;
+//import Object_In_Game.Enemy_Car_Yellow;
 //import Screen_Text.Wave;
 //import Tower.Tower;
 //import Tower.Tower_1;
@@ -43,7 +43,7 @@
 //    }
 //
 //    GraphicsContext graphicsContext;
-//    List<Monster> Manager_Object_Car = new ArrayList<>(); // tạo một danh sách các đối tượng kiểu Monster_car.
+//    List<Enemy> Manager_Object_Car = new ArrayList<>(); // tạo một danh sách các đối tượng kiểu Monster_car.
 //    List<Tower> Manager_towers = new ArrayList<>(); // danh sách đối tượng tháp;
 //
 //    @Override
@@ -513,47 +513,47 @@
 //    }
 //    // Khởi tạo đối tượng xe .
 //
-//    public Monster Create_Monster_Car_1(){
+//    public Enemy Create_Monster_Car_1(){
 //        Image image = new Image("file:src/AssetsKit/233.png");
-//        Monster monster_car = null;
+//        Enemy monster_car = null;
 //        if (Index_Coordinates == 1) {
-//            monster_car = new Monster_Car_1(image,1200,300,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Red(image,1200,300,0,wave.Speed(),0,90);
 //        }
 //        else if (Index_Coordinates == 2) {
-//            monster_car = new Monster_Car_1(image,1200,225,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Red(image,1200,225,0,wave.Speed(),0,90);
 //        }
 //        else if (Index_Coordinates == 3) {
-//            monster_car = new Monster_Car_1(image,1200,45,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Red(image,1200,45,0,wave.Speed(),0,90);
 //        }
 //        return monster_car ;
 //    }
 //
-//    public Monster Create_Monster_Car_2(){
+//    public Enemy Create_Monster_Car_2(){
 //        Image image = new Image("file:src/AssetsKit/237.png");
-//        Monster monster_car = null;
+//        Enemy monster_car = null;
 //        if (Index_Coordinates == 1) {
-//            monster_car = new Monster_Car_2(image,1200,300,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Blue(image,1200,300,0,wave.Speed(),0,90);
 //        }
 //        else if (Index_Coordinates == 2) {
-//            monster_car = new Monster_Car_2(image,1200,225,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Blue(image,1200,225,0,wave.Speed(),0,90);
 //        }
 //        else if (Index_Coordinates == 3) {
-//            monster_car = new Monster_Car_2(image,1200,45,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Blue(image,1200,45,0,wave.Speed(),0,90);
 //        }
 //        return monster_car ;
 //    }
 //
-//    public Monster Create_Monster_Car_3(){
+//    public Enemy Create_Monster_Car_3(){
 //        Image image = new Image("file:src/AssetsKit/231.png");
-//        Monster monster_car = null;
+//        Enemy monster_car = null;
 //        if (Index_Coordinates == 1) {
-//            monster_car = new Monster_Car_3(image,1200,300,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Yellow(image,1200,300,0,wave.Speed(),0,90);
 //        }
 //        else if (Index_Coordinates == 2) {
-//            monster_car = new Monster_Car_3(image,1200,225,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Yellow(image,1200,225,0,wave.Speed(),0,90);
 //        }
 //        else if (Index_Coordinates == 3) {
-//            monster_car = new Monster_Car_3(image,1200,45,0,wave.Speed(),0,90);
+//            monster_car = new Enemy_Car_Yellow(image,1200,45,0,wave.Speed(),0,90);
 //        }
 //        return monster_car ;
 //    }
@@ -564,7 +564,7 @@
 //        Manager_Object_Car.forEach(g->g.Blood_bar(graphicsContext));
 //    }
 //
-//    //  Monster Map_1
+//    //  Enemy Map_1
 //    public void Monster_Update_Move_Map1(int i){
 //        if (Manager_Object_Car.get(i).getX() > 610 ){ // Nếu xObject2 lớn nhỏ hơn đoạn rẽ thứ nhất
 //            Manager_Object_Car.get(i).Move_Left();
@@ -595,7 +595,7 @@
 //        }
 //    }
 //
-//    //  Monster Map_2
+//    //  Enemy Map_2
 //    public void Monster_Update_Move_Map2(int i){
 //        if (Manager_Object_Car.get(i).getX() > 770){
 //            Manager_Object_Car.get(i).Move_Left();
@@ -617,7 +617,7 @@
 //            Manager_Object_Car.get(i).setRotate(0);
 //        }
 //    }
-//    // Monster Map_3
+//    // Enemy Map_3
 //    public void Monster_Update_Move_Map3(int i){
 //        if (Manager_Object_Car.get(i).getX() > 735 && Manager_Object_Car.get(i).getY() == 45){
 //            Manager_Object_Car.get(i).Move_Left();

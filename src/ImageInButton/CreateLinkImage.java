@@ -106,4 +106,30 @@ public class CreateLinkImage {
         imageView.setY(200);
         return image;
     }
+    // Anh restart
+    public ImageView Cancel(){
+        Image image = new Image("file:src/AssetsKit/Cancel.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(120);
+        imageView.setFitHeight(35);
+        return imageView;
+    }
+    // Image pause
+
+    public ImageView Pause(){
+        Image image = new Image("file:src/AssetsKit/pause.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(120);
+        imageView.setFitHeight(35);
+        return imageView;
+    }
+
+    // Image
+    public ImageView Resume(){
+        Image image = new Image("file:src/AssetsKit/resume.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(120);
+        imageView.setFitHeight(35);
+        return imageView;
+    }
 }

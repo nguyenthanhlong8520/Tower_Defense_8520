@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 public class S_Text {
     public int Lives = 30;
     public int wave = 10;
-    public int Funds = 300;
+    public int Funds = 850000;
 
     public int getLives() {
         return Lives;

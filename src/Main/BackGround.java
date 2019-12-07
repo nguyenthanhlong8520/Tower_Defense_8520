@@ -2,13 +2,12 @@ package Main;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 
 public class BackGround {
     // Backgound cua man hinh choi.
     public void draw_Background_Match_1(GraphicsContext gc) {
-      //  Image BackGround = new Image("file:/home/nguyen/Desktop/Image/Bg.png");
         Image BackGround = new Image("file:src/AssetsKit/Bg.png");
-        //gc.drawImage(BackGround,0,0,1024,704);
         gc.drawImage(BackGround,0,0,1000,700);
     }
     //
@@ -36,10 +35,18 @@ public class BackGround {
         gc.drawImage(Test,1000,0,400,700);
     }
     //
-    public void draw_Background_Game_Over(GraphicsContext gc) {
-        //  Image BackGround = new Image(Over"file:/home/nguyen/Desktop/Image/Bg.png");
-        Image BackGround = new Image("file:src/AssetsKit/Game_Over.jpg");
-        //gc.drawImage(BackGround,0,0,1024,704);
-        gc.drawImage(BackGround,0,0,1000,700);
+    public ImageView Game_Over(GraphicsContext gc) {
+        Image gameOver = new Image("file:src/AssetsKit/Game_Over.jpg");
+        ImageView imageView = new ImageView(gameOver);
+        imageView.setX(0);
+        imageView.setY(0);
+        imageView.setFitWidth(1400);
+        imageView.setFitHeight(700);
+        return imageView;
+    }
+    public void draw_tree(GraphicsContext gc) {
+        Image tree = new Image("file:src/AssetsKit/tree.png");
+        gc.drawImage(tree,581,190,112,112);
+        gc.drawImage(tree,43,110,112,112);
     }
 }
