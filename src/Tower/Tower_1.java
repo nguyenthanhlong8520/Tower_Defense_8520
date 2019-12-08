@@ -25,7 +25,7 @@ public class Tower_1 extends Tower {
     Image image_tower = new Image("file:src/AssetsKit/Tower.png");
     Image image_base = new Image("file:src/AssetsKit/Base.png");
     Image image_range = new Image("file:src/AssetsKit/Range.png");
-    int Damage = 4;
+    int Damage = 5;
 
     public Tower_1() {}
 

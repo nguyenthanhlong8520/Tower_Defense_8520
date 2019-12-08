@@ -6,27 +6,27 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class S_Text {
-    public int Lives = 30;
-    public int wave = 10;
-    public int Funds = 850000;
+    protected int lives = 30;
+    protected int wave = 15;
+    protected int funds = 3000;
 
     public int getLives() {
-        return Lives;
+        return lives;
     }
     public void setLives(int lives) {
-        Lives = lives;
+        this.lives = lives;
     }
     public int getFunds() {
-        return Funds;
+        return funds;
     }
     public void setFunds(int funds) {
-        Funds = funds;
+        this.funds = funds;
     }
     public int getX() {
-        return Lives = 30;
+        return lives = 30;
     }
     public void setX(int x) {
-        this.Lives = x;
+        this.lives = x;
     }
     public int getWave() {
         return wave;
@@ -35,9 +35,8 @@ public class S_Text {
         this.wave = wave;
     }
 
-
-    public javafx.scene.text.Text Lives(){
-        javafx.scene.text.Text text = new javafx.scene.text.Text();
+    public Text Lives(){
+        Text text = new Text();
         text.setX(10);
         text.setY(750);
         text.setFont(Font.font ("Verdana"));
@@ -46,14 +45,14 @@ public class S_Text {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                text.setText("Lives " + Lives );
+                text.setText("Lives " + lives);
             }
         };
         animationTimer.start();
         return text;
     }
-    public javafx.scene.text.Text Funds(){
-        javafx.scene.text.Text text = new javafx.scene.text.Text();
+    public Text Funds(){
+        Text text = new Text();
         text.setX(200);
         text.setY(750);
         text.setFont(Font.font ("Verdana"));
@@ -62,14 +61,14 @@ public class S_Text {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                text.setText("Funds " + Funds );
+                text.setText("Funds " + funds);
             }
         };
         animationTimer.start();
         return text;
     }
-    public javafx.scene.text.Text Wave(){
-        javafx.scene.text.Text text = new javafx.scene.text.Text();
+    public Text Wave(){
+       Text text = new Text();
         text.setX(400);
         text.setY(750);
         text.setFont(Font.font ("Verdana"));
@@ -78,11 +77,10 @@ public class S_Text {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                text.setText("Wave : " + wave + "/" + 10);
+                text.setText("Wave : " + wave + "/" + 15);
             }
         };
         animationTimer.start();
         return text;
     }
-
 }

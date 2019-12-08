@@ -57,7 +57,7 @@ public class Enemy_Car_Blue extends Enemy {
 
         for (int i = 0; i < list_Enemy.size() ; i++){
             if (list_Enemy.get(i).getHealth() > 100 && list_Enemy.get(i).getHealth() < 150){
-                graphicsContext.drawImage(rotatedImage5,x+37,y);
+                // graphicsContext.drawImage(rotatedImage5,x+37,y);
             }
             else if (list_Enemy.get(i).getHealth() > 80 && list_Enemy.get(i).getHealth() < 100){
                 graphicsContext.drawImage(rotatedImage4,x+37,y);
@@ -69,13 +69,11 @@ public class Enemy_Car_Blue extends Enemy {
                 graphicsContext.drawImage(rotatedImage2,x+37,y);
             }
             else if (list_Enemy.get(i).getHealth() > 20 && list_Enemy.get(i).getHealth() < 40 ){
-                graphicsContext.drawImage(rotatedImage1,x+37,y);
+                //   graphicsContext.drawImage(rotatedImage1,x+37,y);
             }
         }
     }
-
-
-
+    
     @Override
     public void Move_Up() {
         y -= Speed; }

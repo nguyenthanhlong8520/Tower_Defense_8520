@@ -22,7 +22,7 @@ public class Tower_2 extends Tower {
     Image image = new Image("file:src/AssetsKit/rocket.png");
     Image image1 = new Image("file:src/AssetsKit/Base.png");
     Image image2 = new Image("file:src/AssetsKit/Range.png");
-    int Dame = 15;
+    int Dame = 20;
     Image image_range;
 
     public Tower_2() {

@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import Singleton.Singleton;
+import Object_In_Game.CreateEnemy.CrEnemy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class Main_Test_2 extends Application {
     CreateLinkImage createLinkImage = new CreateLinkImage() ;
     Canvas canvas ;
     BackGround Background;
+    CrEnemy crEnemy = new CrEnemy();
 
     public static void main(String[] args) {
         launch(args);
@@ -124,9 +126,9 @@ public class Main_Test_2 extends Application {
                     music.Music_minions();
                     wave.setWave(1);
                     for (int i = 0 ; i < wave.Limit_Monster() - 1; i++){
-                        Manager_Enemy.add(Create_Enemy_Blue());
+                        Manager_Enemy.add(crEnemy.Create_Enemy_Red(wave.Speed(),wave.Blood(),graphicsContext));
                     }
-                    Manager_Enemy.add(Create_Enemy_Planes());
+                    Manager_Enemy.add(crEnemy.Create_Enemy_Planes(wave.Speed(),wave.Blood(),graphicsContext));
                 }
                 Event = true;
             }
@@ -204,65 +206,7 @@ public class Main_Test_2 extends Application {
     }
     // Create enemy .
 
-    public Enemy Create_Enemy_Red(){
-        Image image = new Image("file:src/AssetsKit/233.png");
-        Enemy enemy_car = null;
-        if (Index_Coordinates == 1) {
-            enemy_car = new Enemy_Car_Red(image,1200,300,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 2) {
-            enemy_car = new Enemy_Car_Red(image,1200,225,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 3) {
-            enemy_car = new Enemy_Car_Red(image,1200,45,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        return enemy_car;
-    }
 
-    public Enemy Create_Enemy_Blue(){
-        Image image = new Image("file:src/AssetsKit/237.png");
-        Enemy enemy_car = null;
-        if (Index_Coordinates == 1) {
-            enemy_car = new Enemy_Car_Blue(image,1200,300,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 2) {
-            enemy_car = new Enemy_Car_Blue(image,1200,225,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 3) {
-            enemy_car = new Enemy_Car_Blue(image,1200,45,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        return enemy_car;
-    }
-
-    public Enemy Create_Enemy_Yellow(){
-        Image image = new Image("file:src/AssetsKit/231.png");
-        Enemy enemy_car = null;
-        if (Index_Coordinates == 1) {
-            enemy_car = new Enemy_Car_Yellow(image,1200,300,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 2) {
-            enemy_car = new Enemy_Car_Yellow(image,1200,225,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 3) {
-            enemy_car = new Enemy_Car_Yellow(image,1200,45,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        return enemy_car;
-    }
-
-    public Enemy Create_Enemy_Planes(){
-        Image image = new Image("file:src/AssetsKit/planes.png");
-        Enemy enemy_car = null;
-        if (Index_Coordinates == 1) {
-            enemy_car = new Enemy_Planes(image,1200,300,0,wave.Speed() , wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 2) {
-            enemy_car = new Enemy_Planes(image,1200,225,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        else if (Index_Coordinates == 3) {
-            enemy_car = new Enemy_Planes(image,1200,45,0,wave.Speed(),wave.Blood(),90,graphicsContext);
-        }
-        return enemy_car;
-    }
     // Ham` render chung .
     public void Render(){
         Manager_Enemy.forEach(g->g.Render());
@@ -355,39 +299,40 @@ public class Main_Test_2 extends Application {
     public void Limit_Monster(){
         if( wave.getWave() == 2 ){
             for (int i = 0 ; i < wave.Limit_Monster() ; i++ ){
-                Manager_Enemy.add(Create_Enemy_Yellow());
+                Manager_Enemy.add(crEnemy.Create_Enemy_Yellow(wave.Speed(),wave.Blood(),graphicsContext));
             }
         }
         else if (wave.getWave() == 3 || wave.getWave() == 6){
             for (int i = 0 ; i < wave.Limit_Monster() - 1 ; i++ ){
-                Manager_Enemy.add(Create_Enemy_Blue());
+                Manager_Enemy.add(crEnemy.Create_Enemy_Blue(wave.Speed(),wave.Blood(),graphicsContext));
             }
-            Manager_Enemy.add(Create_Enemy_Planes());
+            Manager_Enemy.add(crEnemy.Create_Enemy_Planes(wave.Speed(),wave.Blood(),graphicsContext));
         }
         else if (wave.getWave() == 7){
             for (int i = 0 ; i < wave.Limit_Monster() - 3; i++ ){
-                Manager_Enemy.add(Create_Enemy_Yellow());
+                Manager_Enemy.add(crEnemy.Create_Enemy_Red(wave.Speed(),wave.Blood(),graphicsContext));
             }
             for (int i = 0 ; i <  3; i++ ){
-                Manager_Enemy.add(Create_Enemy_Planes());
+                Manager_Enemy.add(crEnemy.Create_Enemy_Planes(wave.Speed(),wave.Blood(),graphicsContext));
             }
         }
         else if (wave.getWave() == 5){
             for (int i = 0 ; i < wave.Limit_Monster() - 2; i++ ){
-                Manager_Enemy.add(Create_Enemy_Yellow());
+                Manager_Enemy.add(crEnemy.Create_Enemy_Yellow(wave.Speed(),wave.Blood(),graphicsContext));
             }
-            Manager_Enemy.add(Create_Enemy_Planes());
-            Manager_Enemy.add(Create_Enemy_Planes());
+            Manager_Enemy.add(crEnemy.Create_Enemy_Planes(wave.Speed(),wave.Blood(),graphicsContext));
+            Manager_Enemy.add(crEnemy.Create_Enemy_Planes(wave.Speed(),wave.Blood(),graphicsContext));
         }
         else {
             for (int i = 0 ; i < wave.Limit_Monster() - 4; i++ ){
-                Manager_Enemy.add(Create_Enemy_Yellow());
+                Manager_Enemy.add(crEnemy.Create_Enemy_Yellow(wave.Speed(),wave.Blood(),graphicsContext));
             }
             for (int i = 0 ; i < 4; i++ ){
-                Manager_Enemy.add(Create_Enemy_Planes());
+                Manager_Enemy.add(crEnemy.Create_Enemy_Planes(wave.Speed(),wave.Blood(),graphicsContext));
             }
         }
     }
+
 
     public Scene Button_Choice_Menu( Stage primaryStage){
         buttonMap_1 = new Button();
@@ -495,6 +440,7 @@ public class Main_Test_2 extends Application {
         animationTimer.start();
         return buttonTower;
     }
+
     // xoa doi tuong
     public void Delete_Object_2(int i){
         // giảm các chỉ số của mảng để xóa đối tượng.
