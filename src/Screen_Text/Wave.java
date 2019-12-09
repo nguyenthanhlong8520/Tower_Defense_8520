@@ -15,9 +15,9 @@ public class Wave {
     public int Limit_Monster(){
         switch (getWave()){
             case 1 :
-                return 2;
-            case 2:
                 return 5;
+            case 2:
+                return 7;
             case 3:
                 return 9;
             case 4:

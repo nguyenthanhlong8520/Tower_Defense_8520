@@ -15,7 +15,7 @@ public class Enemy_Car_Blue extends Enemy {
 
     @Override
     public void Render() {
-        ImageView imageView = new ImageView(image); // xe vang`
+        ImageView imageView = new ImageView(image);
         imageView.setRotate(Rotate);
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);

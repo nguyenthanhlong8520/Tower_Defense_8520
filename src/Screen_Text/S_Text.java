@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextBoundsType;
 
 public class S_Text {
     protected int lives = 30;
@@ -67,6 +68,7 @@ public class S_Text {
         animationTimer.start();
         return text;
     }
+
     public Text Wave(){
        Text text = new Text();
         text.setX(400);
@@ -83,4 +85,5 @@ public class S_Text {
         animationTimer.start();
         return text;
     }
+
 }

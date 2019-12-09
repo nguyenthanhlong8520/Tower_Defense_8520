@@ -6,7 +6,7 @@
 //import Object_In_Game.Enemy_Car_Yellow;
 //import Screen_Text.Wave;
 //import Tower.Tower;
-//import Tower.Tower_1;
+//import Tower.MachineGunTower;
 //import javafx.animation.AnimationTimer;
 //import javafx.application.Application;
 //import javafx.event.ActionEvent;
@@ -695,7 +695,7 @@
 //    }
 //    // Tạo Tower
 //    public Tower Create_Tower(double x , double y){
-//        Tower tower = new Tower_1(x,y,90,200);
+//        Tower tower = new MachineGunTower(x,y,90,200);
 //        return tower;
 //    }
 //    // Điều kiện để không cho đặt trên đường .

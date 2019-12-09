@@ -17,7 +17,7 @@ public class CreateLinkImage {
         imageView1.setFitWidth(120);
         return imageView1;
     }
-    // Nap anh nut Tower_1
+    // Nap anh nut MachineGunTower
     public ImageView CreateImageTower_1(){
         Image image1 = new Image("file:src/AssetsKit/Tower1.png");
         ImageView imageView1 = new ImageView(image1);

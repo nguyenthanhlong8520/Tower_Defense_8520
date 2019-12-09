@@ -7,7 +7,7 @@ import javafx.scene.media.MediaPlayer;
 public class Singleton {
     private static Singleton instance;
     private Singleton(){}
-    private Media media = new Media("file:/home/nguyen/Desktop/Image/LOL_ms.mp3");
+        private Media media = new Media("file:/home/nguyen/Desktop/Image/LOL_ms.mp3");
     private MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     private Media media_defeat = new Media("file:/home/nguyen/Desktop/Image/Defeat.mp3");
